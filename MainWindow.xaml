@@ -15,7 +15,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Tabs -->
+        <!-- Tabs for the following headings -->
         <TabControl Grid.Row="0" Margin="20" Background="White" BorderThickness="0">
             <!-- Input Tab -->
             <TabItem Header="Car Input">
@@ -33,31 +33,31 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <!-- Row 0 -->
+                    <!-- Car brand or vehicle brand-->
                     <Label x:Name="Make" Content="Make:" Grid.Row="0" Grid.Column="0" 
                        Foreground="Black" Margin="5" VerticalAlignment="Center"/>
                     <ComboBox x:Name="MakeCar" Grid.Row="0" Grid.Column="1" Width="200"
                           ToolTip="Model Make for cars"/>
 
-                    <!-- Row 1 -->
+                    <!-- Car or Vehicle Model -->
                     <Label x:Name="Model" Content="Model:" Grid.Row="1" Grid.Column="0" 
                        Foreground="Black" Margin="5" VerticalAlignment="Center"/>
                     <TextBox x:Name="ModelName" Grid.Row="1" Grid.Column="1" Width="200"
                          ToolTip="Model of the car"/>
 
-                    <!-- Row 2 -->
+                    <!-- Year of the Car or vehicle -->
                     <Label x:Name="Year" Content="Year:" Grid.Row="2" Grid.Column="0" 
                        Foreground="Black" Margin="5" VerticalAlignment="Center"/>
                     <ComboBox x:Name="CarYear" Grid.Row="2" Grid.Column="1" Width="200"
                           ToolTip="Year of the car"/>
 
-                    <!-- Row 3 -->
+                    <!-- Price of the car -->
                     <Label x:Name="Price" Content="Price:" Grid.Row="3" Grid.Column="0" 
                        Foreground="Black" Margin="5" VerticalAlignment="Center"/>
                     <TextBox x:Name="PriceCar" Grid.Row="3" Grid.Column="1" Width="200"
                          ToolTip="Price of the car"/>
 
-                    <!-- Row 4 -->
+                    <!-- Determines if the car is new or used by using a check box  -->
                     <Label x:Name="New" Content="New:" Grid.Row="4" Grid.Column="0" 
                        Foreground="Black" Margin="5" VerticalAlignment="Center"
                        ToolTip="Is the car new or used"/>
