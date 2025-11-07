@@ -11,7 +11,7 @@ namespace ClassExercise4Inheritance
 {
     public abstract class Vehicle
     {
-        // p Variables
+        // protected Variables
         protected string make;
         protected string model;
         protected int year;
