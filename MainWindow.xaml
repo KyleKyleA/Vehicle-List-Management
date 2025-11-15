@@ -58,12 +58,18 @@
                          ToolTip="Price of the car"/>
 
                     <!-- Determines if the car is new or used by using a check box  -->
-                    <Label x:Name="New" Content="New:" Grid.Row="4" Grid.Column="0" 
-                       Foreground="Black" Margin="5" VerticalAlignment="Center"
-                       ToolTip="Is the car new or used"/>
+                    <Label x:Name="New" Content="New:" Grid.Row="3" Grid.Column="0" 
+                       Foreground="Black" Margin="2,32,7,0" VerticalAlignment="Top"
+                       ToolTip="Is the car new or used" Grid.RowSpan="2"/>
                     <CheckBox x:Name="NewOrUsed" Grid.Row="4" Grid.Column="1"
                           ToolTip="Check Yes for New or leave it for used"
                           Checked="NewOrUsed_Checked"/>
+                    <!-- Radio Button for either choosing a car or vehicle(JetSki) -->
+                    <Label x:Name="VehicleType" Content="Vehicle Type:" Grid.Row="4" Grid.Column="0" 
+                       Foreground="Black" Margin="-8,31,17,0" VerticalAlignment="Top"/>
+                    <RadioButton x:FieldModifier="public" x:Name="CarRadioBtn" Content="Car" Grid.Row="4" Grid.Column="1"
+                                 IsChecked="True" Margin="0,30,0,0"
+                                 ToolTip="Select Car as the vehicle type"/> 
                 </Grid>
             </TabItem>
 

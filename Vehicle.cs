@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 // Author: Kyle Angeles
 // Date: 10/29/25
+// Modified: 11/15/25
 // Description: Abstract Vehicle Class from the Car.cs and other vehicle types to inherit from
 namespace ClassExercise4Inheritance
 {
