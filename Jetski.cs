@@ -37,7 +37,12 @@ namespace ClassExercise4Inheritance
         public int MaxSpeed
         {
             get { return MaxSpeed; }
-            set { MaxSpeed = value;  } //Getting the max speed in Km/h since we are canadian
+            set {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Max Speed cannot be negative.");
+                }
+                MaxSpeed = value;  } //Getting the max speed in Km/h since we are canadian
         }
 
         // Returns the description of the JetSki

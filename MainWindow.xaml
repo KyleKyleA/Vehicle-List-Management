@@ -66,8 +66,11 @@
                           Checked="NewOrUsed_Checked" Margin="12,10,-12,26"/>
                     <!-- Radio Button for either choosing a car or vehicle(JetSki) -->
                     <Label x:Name="VehicleType" Content="Vehicle Type:" Grid.Row="4" 
-                       Foreground="Black" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="-8,35,330,0"/>
-                    <ComboBox x:Name="CarJetSki" Grid.Column="1" HorizontalAlignment="Left" Margin="15,40,0,0" Grid.Row="4" VerticalAlignment="Top" Width="120" SelectionChanged="CarJetSki_SelectionChanged"/>
+                       Foreground="Black" VerticalAlignment="Top" RenderTransformOrigin="0.263,0.433" Margin="-2,31,2,0"/>
+                    <ComboBox x:Name="VehicleTypeComboBox" Grid.Row="4" Grid.Column="1" Margin="0,30,0,0" ToolTip="Select vehicle type">
+                        <ComboBoxItem Content="Car" IsSelected="True"/>
+                        <ComboBoxItem Content="Jetski"/>
+                    </ComboBox>
 
 
                 </Grid>
