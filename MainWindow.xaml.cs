@@ -269,7 +269,9 @@ namespace CarListManagement
                 CarYear.Text = selectedCar.Year.ToString();
                 PriceCar.Text = selectedCar.Price.ToString("F2");
                 NewOrUsed.IsChecked = selectedCar.IsNew;
-                
+                CarJetSki.Text = selectedCar.GetDescription();
+
+
 
             }
 
