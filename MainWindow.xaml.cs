@@ -192,22 +192,17 @@ namespace CarListManagement
             catch (ArgumentNullException ex)
             {
                 MessageBox.Show(ex.Message, "Missing Model");
-                Model.Focus();
+                ModelName.Focus();
             }
             // Catching for the price proepry from the vehicle.cs file onto the mainwindow.xaml.cs file
             catch (ArgumentOutOfRangeException ex)
             {
                 MessageBox.Show(ex.Message, "Invalid Price");
-            }
-            catch (FormatException)
-            {
-                MessageBox.Show("Please enter a valid price.", "Invalid Input");
                 PriceCar.Focus();
             }
-            catch (ArgumentException)
+            catch (Exception ex)
             {
-                MessageBox.Show("Please check off the box if the car us new or used.", " Invalid Input");
-                
+                MessageBox.Show($"This is an unexcepted error: {ex.Message}", "Error");
             }
         }
 

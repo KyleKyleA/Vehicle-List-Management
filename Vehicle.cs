@@ -145,12 +145,7 @@ namespace ClassExercise4Inheritance
         public bool IsNew
         {
             get { return isNew;  }
-            set {
-                if (value != true && value != false)
-                {
-                    throw new ArgumentException("IsNew must be either true or false.");
-                }
-                isNew = value;}
+            set {isNew = value;}
         }
 
 
