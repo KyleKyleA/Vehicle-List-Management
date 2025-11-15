@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <!-- Tabs for the following headings -->
-        <TabControl Grid.Row="0" Margin="20" Background="White" BorderThickness="0">
+        <TabControl Grid.Row="0" Margin="20,20,25,75" Background="White" BorderThickness="0" Grid.RowSpan="2">
             <!-- Input Tab -->
             <TabItem Header="Car Input">
                 <Grid Background="White" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400">

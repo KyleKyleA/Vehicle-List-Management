@@ -90,15 +90,23 @@ namespace ClassExercise4Inheritance
             set { make = value; }
         }
 
-            
-           
+
+
         /// <summary>
         /// Gets the different types of models from the vehicle 
+        /// Now we throwed in an exception if the model has either a white space or empty field
+        /// it would throw it an argument exception
+        /// Model Property we are using AgumentNullException
         /// </summary>
         public string Model
         {
             get { return model; }
-            set { model = value; }
+            set { 
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentNullException("Model cannot be empty.");
+                }
+                model = value; }
         }
        
 
@@ -111,16 +119,23 @@ namespace ClassExercise4Inheritance
             set { year = value; }
         }
 
-       
+
 
 
         /// <summary>
         /// If the user types in a price in value or the excated amount
+        /// Added an exception handling if the price is negative it would throw an argument out of range exception
+        /// using the Price Property that gets or sets the price value
         /// </summary>
         public decimal Price
         {
             get { return price; }
-            set {  price = value; }
+            set {
+                if (value < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Price cannot be negative.");
+                }
+                price = value; }
         }
         
 
