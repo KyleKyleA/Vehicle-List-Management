@@ -204,6 +204,12 @@ namespace CarListManagement
                 MessageBox.Show("Please enter a valid price.", "Invalid Input");
                 PriceCar.Focus();
             }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Please check off the box if the car us new or used.", " Invalid Input");
+                
+            }
+        }
 
         ///<summary>
         /// This function validates the user inputs in the form.
