@@ -43,15 +43,15 @@ namespace ClassExercise4Inheritance
         /// <param name="vehicleID"></param>
         public Vehicle(string make, string model, int year, decimal price, bool isNew, int vehicleID)
         {
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.price = price;
-            this.isNew = IsNew;
+            this.Make = make;
+            this.Model = model;
+            this.Year = year;
+            this.Price = price;
+            this.IsNew = IsNew;
             
             // Increment and count the vehicleID
             vehicleCount++;
-            vehicleID = vehicleCount;
+            this.vehicleID = vehicleCount;
 
         }
 
@@ -65,11 +65,11 @@ namespace ClassExercise4Inheritance
         /// <param name="isNew"></param>
         protected Vehicle(string make, string model, int year, decimal price, bool isNew)
         {
-            this.make = make;
-            this.model = model;
-            this.year = year;
-            this.price = price;
-            this.isNew = isNew;
+            this.Make = make;
+            this.Model = model;
+            this.Year = year;
+            this.Price = price;
+            this.IsNew = IsNew;
         }
 
 

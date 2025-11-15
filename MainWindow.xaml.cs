@@ -140,52 +140,70 @@ namespace CarListManagement
 
 
             // Gather data from input controls (make, model, price, and isnew)
-            string make = MakeCar.SelectedItem.ToString();
-            string model = ModelName.Text.Trim();
-            int year = (int)CarYear.SelectedItem;
-            decimal price = decimal.Parse(PriceCar.Text.Trim());
-            bool isNew = NewOrUsed.IsChecked == true;
-
-            // Check if this is a new entry or existing entry
-            if (currentIndex == -1)
+            try
             {
+                string make = MakeCar.SelectedItem.ToString();
+                string model = ModelName.Text.Trim();
+                int year = (int)CarYear.SelectedItem;
+                decimal price = decimal.Parse(PriceCar.Text.Trim());
+                bool isNew = NewOrUsed.IsChecked == true;
 
-             
-                // entering a new car entry - Create and add it
-                Car newCar = new Car(make, model, year, price, isNew);
-               
-                listOfCars.Add(newCar);
+                // Check if this is a new entry or existing entry
+                if (currentIndex == -1)
+                {
 
-                // Display confirmation message using the car's ToString() method
-                MessageBox.Show($"Car added: {newCar}", "Success");
-                ResultBox.Text = "It Worked";
+
+                    // entering a new car entry - Create and add it
+                    Car newCar = new Car(make, model, year, price, isNew);
+
+                    listOfCars.Add(newCar);
+
+                    // Display confirmation message using the car's ToString() method
+                    MessageBox.Show($"Car added: {newCar}", "Success");
+                    ResultBox.Text = "It Worked";
+                }
+                else
+                {
+
+
+                    Car existingCar = listOfCars[currentIndex];
+                    // Combined the existing cars to actually you can update them based of the 
+                    existingCar.UpdateCar(make, model, year, price, isNew);
+
+                    MessageBox.Show($"Car modified: {existingCar}", "Success");
+
+
+
+                }
+
+                // Clears the datagrid
+                dgCarInventory.Items.Clear();
+
+                // Repopulate the datagrid
+                foreach (Car car in listOfCars)
+                {
+                    dgCarInventory.Items.Add(car);
+                }
+
+                // Clear all input fields and reset the form
+                ResetForm();
             }
-            else
+            // Catching the ArgumentNullException for the model property in Vehicle.cs
+            catch (ArgumentNullException ex)
             {
-                
-              
-              Car existingCar = listOfCars[currentIndex];
-              // Combined the existing cars to actually you can update them based of the 
-              existingCar.UpdateCar(make, model, year, price, isNew);
-
-              MessageBox.Show($"Car modified: {existingCar}", "Success");
-                
-
-
+                MessageBox.Show(ex.Message, "Missing Model");
+                Model.Focus();
             }
-
-            // Clears the datagrid
-            dgCarInventory.Items.Clear();
-
-            // Repopulate the datagrid
-            foreach (Car car in listOfCars)
+            // Catching for the price proepry from the vehicle.cs file onto the mainwindow.xaml.cs file
+            catch (ArgumentOutOfRangeException ex)
             {
-                dgCarInventory.Items.Add(car);
+                MessageBox.Show(ex.Message, "Invalid Price");
             }
-
-            // Clear all input fields and reset the form
-            ResetForm();
-        }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter a valid price.", "Invalid Input");
+                PriceCar.Focus();
+            }
 
         ///<summary>
         /// This function validates the user inputs in the form.
