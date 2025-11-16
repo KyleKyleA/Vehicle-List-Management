@@ -1,4 +1,5 @@
 ﻿using ClassExercise4Inheritance;
+using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Security.AccessControl;
 using System.Text;
@@ -196,13 +197,21 @@ namespace CarListManagement
             // Catching for the price proepry from the vehicle.cs file onto the mainwindow.xaml.cs file
             catch (ArgumentOutOfRangeException ex)
             {
+                UpdateStatusBar("Error: Price must be a positive value.");
                 PriceCar.Focus();
             }
             catch (Exception ex)
             {
                 UpdateStatusBar("An error occurred: " + ex.Message);
             }
+
+            dgCarInventory.ItemsSource = null;
+            dgCarInventory.ItemsSource = listOfCars;
+            UpdateStatistics();
+
         }
+
+        
 
        
 
@@ -264,26 +273,22 @@ namespace CarListManagement
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Statistics(object sender, SelectionChangedEventArgs e)
+        private void UpdateStatistics()
         {
-            UpdateStatusBar("Calculating statistics...");
+           
 
-            if (dgCarInventory.ItemsSource is IEnumerable<Car> cars)
-            {
-                int total = cars.Count();
-                decimal totalPrice = cars.Sum(c => c.Price);
+           
+                int total = listOfCars.Count();
+                decimal totalPrice = listOfCars.Sum(c => c.Price);
                 decimal averagePrice = total > 0 ? totalPrice / total : 0;
 
+                // Update the statistics display
+                // Formatting the prices to currency format
                 VehicleNumber.Text = total.ToString();
                 TotalPrice.Text = totalPrice.ToString("C2");
                 AveragePrice.Text = averagePrice.ToString("C2");
-            }
-            else
-            {
-                VehicleNumber.Text = "N/A";
-                TotalPrice.Text = "N/A";
-                AveragePrice.Text = "N/A";
-            }
+           
+
 
             UpdateStatusBar("Statistics updated.");
         }
