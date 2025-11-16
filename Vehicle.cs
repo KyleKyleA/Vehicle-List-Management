@@ -20,7 +20,7 @@ namespace ClassExercise4Inheritance
         protected Boolean isNew;
         protected static int vehicleCount = 0;
         protected int vehicleID;
-        protected string vehicleType;
+      
 
 
 
@@ -33,30 +33,6 @@ namespace ClassExercise4Inheritance
 
         }
 
-
-        /// <summary>
-        /// Parameterized constructor
-        /// </summary>
-        /// <param name="make"></param>
-        /// <param name="model"></param>
-        /// <param name="year"></param>
-        /// <param name="price"></param>
-        /// <param name="isNew"></param>
-        /// <param name="vehicleID"></param>
-        public Vehicle(string make, string model, int year, decimal price, bool isNew, int vehicleID, string vehicleType)
-        {
-            this.Make = make;
-            this.Model = model;
-            this.Year = year;
-            this.Price = price;
-            this.IsNew = IsNew;
-            this.VehicleType = VehicleType;
-
-            // Increment and count the vehicleID
-            vehicleCount++;
-            this.vehicleID = vehicleCount;
-
-        }
 
         /// <summary>
         /// Parameterized constructor for the updating Vehicle
@@ -72,7 +48,12 @@ namespace ClassExercise4Inheritance
             this.Model = model;
             this.Year = year;
             this.Price = price;
-            this.IsNew = IsNew;
+            this.IsNew = isNew;
+            
+
+            // Increment and count the vehicleID
+            vehicleCount++;
+            this.vehicleID = vehicleCount;
         }
 
 
@@ -164,10 +145,9 @@ namespace ClassExercise4Inheritance
         /// Property for the vehicle type
         /// </summary>
         /// <returns></returns>
-        public string VehicleType
+        public abstract string VehicleType
         {
-            get { return vehicleType; }
-            set { vehicleType = value; }
+            get;
         }
 
 

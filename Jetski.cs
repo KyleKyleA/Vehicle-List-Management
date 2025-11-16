@@ -13,6 +13,7 @@ namespace ClassExercise4Inheritance
     public class Jetski : Vehicle
     {
        
+        private int maxSpeed;
 
         /// <summary>
         /// Parameterized Constructor 
@@ -45,6 +46,11 @@ namespace ClassExercise4Inheritance
                 MaxSpeed = value;  } //Getting the max speed in Km/h since we are canadian
         }
 
+        // Overrides the VehicleType property to return "Jetski"
+        public override string VehicleType
+        {
+            get { return "Jetski"; }
+        }
         // Returns the description of the JetSki
         public override string GetDescription()
         {

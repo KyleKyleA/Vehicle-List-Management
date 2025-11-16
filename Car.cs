@@ -32,10 +32,10 @@ namespace ClassExercise4Inheritance
         /// <param name="year"></param>
         /// <param name="price"></param>
         /// <param name="isNew"></param>
-        public Car(string make, string model, int year, decimal price, bool isNew)
-            : base(make, model, year, price, isNew)
+        public Car(string make, string model, int year, decimal price, bool isNew, string vehicleType)
+            : base(make, model, year, price, isNew, vehicleType)
         {
-            this.VehicleType = vehicleType;
+           
         }
 
 
@@ -49,6 +49,11 @@ namespace ClassExercise4Inheritance
             vehicleType = vehicleType;
         }
 
+        public override string VehicleType
+        {
+            get { return "Car"; }
+            
+        }   
         ///<summary>
         /// What this function does it overrid the string method to display the car details 
         ///</summary>

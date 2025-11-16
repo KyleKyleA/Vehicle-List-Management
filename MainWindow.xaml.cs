@@ -29,7 +29,7 @@ namespace CarListManagement
     public partial class MainWindow : Window
     {
         // Using a List to store car objects
-        List<Car> listOfCars = new List<Car>();
+        List<Vehicle> listOfVehicles = new List<Vehicle>();
         int currentIndex = -1;
         public MainWindow()
         {
@@ -146,17 +146,21 @@ namespace CarListManagement
                 decimal price = decimal.Parse(PriceCar.Text.Trim());
                 bool isNew = NewOrUsed.IsChecked == true;
 
+                Vehicle newVehicle;
                 // Check if this is a new entry or existing entry
-                if (currentIndex == -1)
+                if (currentIndex == -1) 
                 {
+                    if (vehicleType == "Car")
+                    {
+                        // Create a new Car Obkect and add it to the list
+                        newVehicle = new Car(make, model, year, price, isNew, vehicleType)
+                    }
 
-                    
-                    Car newCar = new Car(make, model, year, price, isNew);
 
-                    listOfCars.Add(newCar);
+
 
                     // Display confirmation message using the car's ToString() method
-                    MessageBox.Show($"Car added: {newCar}", "Success");
+                    MessageBox.Show($"Car added: {NewCar}", "Success");
                     UpdateStatusBar("New car added to inventory.");
                     ResultBox.Text = "It Worked";
                 }
@@ -166,6 +170,7 @@ namespace CarListManagement
                     // Update existing car details
                     Car existingCar = listOfCars[currentIndex];
                     existingCar.UpdateCar(make, model, year, price, isNew);
+                 
 
                     MessageBox.Show($"Car modified: {existingCar}", "Success");
 
@@ -176,13 +181,13 @@ namespace CarListManagement
                 }
 
                 // Clears the datagrid
-                dgCarInventory.Items.Clear();
+                //dgCarInventory.Items.Clear();
 
-                // Repopulate the datagrid
-                foreach (Car car in listOfCars)
-                {
-                    dgCarInventory.Items.Add(car);
-                }
+                //// Repopulate the datagrid
+                //foreach (Car car in listOfCars)
+                //{
+                //    dgCarInventory.Items.Add(car);
+                //}
 
                 // Clear all input fields and reset the form
                 ResetForm();
@@ -275,21 +280,19 @@ namespace CarListManagement
         /// <param name="e"></param>
         private void UpdateStatistics()
         {
-           
+          // Calculate statistics
+          int total = listOfCars.Count();
+          decimal totalPrice = listOfCars.Sum(c => c.Price);
+          decimal averagePrice = total > 0 ? totalPrice / total : 0;
 
-           
-                int total = listOfCars.Count();
-                decimal totalPrice = listOfCars.Sum(c => c.Price);
-                decimal averagePrice = total > 0 ? totalPrice / total : 0;
-
-                // Update the statistics display
-                // Formatting the prices to currency format
-                VehicleNumber.Text = total.ToString();
-                TotalPrice.Text = totalPrice.ToString("C2");
-                AveragePrice.Text = averagePrice.ToString("C2");
-           
+            // Update the statistics display
+            // Formatting the prices to currency format
+          VehicleNumber.Text = total.ToString();
+          TotalPrice.Text = totalPrice.ToString("C2");
+          AveragePrice.Text = averagePrice.ToString("C2");
 
 
+            // Update the status bar
             UpdateStatusBar("Statistics updated.");
         }
 

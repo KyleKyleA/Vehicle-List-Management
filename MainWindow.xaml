@@ -107,7 +107,7 @@
             </TabItem>
 
             <!-- Statistics Tab -->
-            <TabItem Header="Statistics">
+            <TabItem Header="Statistics" >
                 <Grid Background="AntiqueWhite" Margin="31,0,24,0" Height="268">
                     <Label Content="Number of Vehicles:" FontSize="15" FontWeight="Bold" Margin="18,0,22,238"/>
                     <TextBlock x:Name="VehicleNumber" HorizontalAlignment="Left" Margin="177,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Foreground="{x:Null}" Background="White"/>
