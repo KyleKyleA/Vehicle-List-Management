@@ -99,14 +99,23 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            
+
             <!-- Statistics or Inventory Datav -->
             <TabItem Header="Statistics">
-                
+                <Grid  Background="White" Margin="15">
+                    <StackPanel Margin="10">
+                        <Label x:Name="TotalNumberofVehicles" Content="Total Number of Vehicles: " FontWeight="Bold" FontSize="14" Margin="0,5"/>
+                        <Label x:Name="TotalPriceOfVehicles" Content="Total Price of Vehicles Entered: " FontWeight="Bold" FontSize="14" Margin="0.5"/>
+                        <Label x:Name="AveragePriceOfVehicles" Content="Average Price of Vehicles: " FontWeight="Bold" FontSize="14" Margin="0,5"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="StatisticsResultBox" Background="#FF85A8FF" Margin="203,16,198,243"/>
+                    <TextBlock x:Name="StatisticsResultBox2" Background="#FF85A8FF" Margin="228,51,173,208"/>
+                </Grid>
             </TabItem>
         </TabControl>
-        
-        
+
+
 
         <!-- Bottom Button Panel -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center"
