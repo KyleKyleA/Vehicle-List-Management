@@ -132,15 +132,7 @@ namespace CarListManagement
         /// <param name="e"></param>
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-            // This validates the user inputs before proceeding
-            // If validation fails, the function returns early
-            // This prevents any further processing with invalid data
-            // Using the ValidateInputs function to check for valid inputs
-            if (!ValidateInputs())
-            {
-                return;
-            }
-
+        
 
             // Gather data from input controls (make, model, price, and isnew)
             try
@@ -163,6 +155,7 @@ namespace CarListManagement
 
                     // Display confirmation message using the car's ToString() method
                     MessageBox.Show($"Car added: {newCar}", "Success");
+                    UpdateStatusBar("New car added to inventory.");
                     ResultBox.Text = "It Worked";
                 }
                 else
@@ -207,55 +200,11 @@ namespace CarListManagement
             }
             catch (Exception ex)
             {
-                
+                UpdateStatusBar("An error occurred: " + ex.Message);
             }
         }
 
-        ///<summary>
-        /// This function validates the user inputs in the form.
-        /// Gives an error message if any input is invalid.
-        /// validates whether the user input has any sort of white space or is empty
-        /// manual validation for each input in the program 
-        /// </summary>
-        private bool ValidateInputs()
-                    {
-                        string errorMessage = "";
-
-                        if (MakeCar.SelectedIndex == -1)
-                        {
-                            errorMessage += "Please select a car make.\n";
-                        }
-
-
-                        if (string.IsNullOrWhiteSpace(ModelName.Text))
-                        {
-                            errorMessage += "Car Model cannot be blank. "; // Model name is empty or whitespace return false
-                        }
-
-                        if (CarYear.SelectedIndex == -1)
-                        {
-                            errorMessage += "Please select a car year.\n";
-                        }
-
-                        if (string.IsNullOrEmpty(PriceCar.Text))
-                        {
-                            errorMessage += "Price cannot be blank.\n";
-                        }
-                        else if (string.IsNullOrWhiteSpace(PriceCar.Text) || !decimal.TryParse(PriceCar.Text, out decimal price) || price < 0)
-                        {
-                            errorMessage += "Please enter a valid number\n";
-                        }
-                       
-
-                        if (!string.IsNullOrEmpty(errorMessage))
-                        {
-                            MessageBox.Show(errorMessage, "Input Validation Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                            return false; // If all the inputs are invalid 
-                        }
-
-                        return true; // All inputs are valid
-
-                    }
+       
 
         //<summary>
         /// This populates the data grid with some values in the list
@@ -274,7 +223,6 @@ namespace CarListManagement
                 CarYear.Text = selectedCar.Year.ToString();
                 PriceCar.Text = selectedCar.Price.ToString("F2");
                 NewOrUsed.IsChecked = selectedCar.IsNew;
-                
 
 
 

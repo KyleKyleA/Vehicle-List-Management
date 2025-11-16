@@ -9,14 +9,15 @@
         Loaded="Window_Loaded"
         ResizeMode="CanResize">
 
-    <Grid Background="#FF1A86FF" Margin="0,0,-45,-36">
+    <Grid Background="#FF1A86FF" Margin="0,0,0,-1">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Tabs for the following headings -->
-        <TabControl Grid.Row="0" Margin="20,20,25,75" Background="White" BorderThickness="0" Grid.RowSpan="2">
+        <TabControl Grid.Row="0" Margin="20,19,25,1" Background="White" BorderThickness="0">
+
             <!-- Input Tab -->
             <TabItem Header="Car Input">
                 <Grid Background="White" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400">
@@ -81,15 +82,20 @@
             <!-- Data Grid Tab -->
             <TabItem Header="Car Inventory">
                 <Grid Background="White" Margin="15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="708*"/>
+                    </Grid.ColumnDefinitions>
                     <DataGrid x:Name="dgCarInventory"
                           AutoGenerateColumns="False"
                           CanUserAddRows="False"
                           HeadersVisibility="Column"
                           AlternatingRowBackground="LightGray"
                           GridLinesVisibility="All"
-                          SelectionChanged="dgCarInventory_SelectionChanged">
+                          SelectionChanged="dgCarInventory_SelectionChanged" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="New" Binding="{Binding IsNew}" Width="60"/>
+                            <DataGridTextColumn Header="Vehicle Type" Binding="{Binding VehicleType}" Width="100"/>
                             <DataGridTextColumn Header="ID" Binding="{Binding CarID}" Width="60"/>
                             <DataGridTextColumn Header="Make" Binding="{Binding Make}" Width="120"/>
                             <DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="120"/>
@@ -108,28 +114,6 @@
                         <Label x:Name="TotalPriceOfVehicles" Content="Total Price of Vehicles Entered: " FontWeight="Bold" FontSize="14" Margin="0.5"/>
                         <Label x:Name="AveragePriceOfVehicles" Content="Average Price of Vehicles: " FontWeight="Bold" FontSize="14" Margin="0,5"/>
                     </StackPanel>
-
-                    <TextBlock x:Name="StatisticsResultBox" Background="#FF85A8FF" Margin="201,21,257,278" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="0.065"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock x:Name="StatisticsResultBox2" Background="#FF85A8FF" Margin="224,61,249,243" RenderTransformOrigin="0.5,0.5">
-                        <TextBlock.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform Angle="0.046"/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </TextBlock.RenderTransform>
-                    </TextBlock>
-                    <TextBlock x:Name="StatisticsResultBox3" Background="#FF85A8FF" Margin="213,90,263,209"/>
                 </Grid>
             </TabItem>
         </TabControl>
@@ -138,25 +122,25 @@
 
         <!-- Botton Panel -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left"
-                Margin="35,24,0,6" Height="50">
-            <!-- StatusBar docked to the left -->
-            <StatusBar x:Name="UpdateStatus" DockPanel.Dock="Left" Width="110" Background="#FF85A8FF" Height="35">
-                <StatusBarItem Height="35" Width="245">
-                    <TextBlock x:Name="StatusTextBlock" Text="Ready" FontWeight="Bold" Foreground="Black"/>
-                </StatusBarItem>
-            </StatusBar>
+                Margin="40,19,0,16" Width="800">
             <Button x:Name="EnterBtn" Content="_Enter" Width="100" Height="40"
                 Click="EnterBtn_Click" ToolTip="Helps with entering an existing or new car entry"/>
-
-
             <!-- Bottom Button Stack Panel-->
             <Button x:Name="ResetBtn" Content="Rese_t" Width="100" Height="40" Margin="5,0"
                 Click="ResetBtn_Click" ToolTip="Helps with resetting the window"/>
-            <Button x:Name="ExitBtn" Content="E_xit" Width="100" Height="40" Margin="5,0"
+            <Button x:Name="ExitBtn" Content="E_xit" Width="95" Height="40"
                 Click="ExitBtn_Click" ToolTip="Exits out of the program"/>
-            <TextBlock x:Name="ResultBox" Width="345" Height="34" Background="#FF85A8FF"
-                   FontWeight="Bold" Foreground="Green"/>
+            <!-- StatusBar docked to the left -->
+            <StatusBar x:Name="UpdateStatus" DockPanel.Dock="Left" Width="250" Background="#FF85A8FF" Height="35">
+                <StatusBarItem Height="35" Width="500" Margin="0,-2,0,3">
+                    <TextBlock x:Name="StatusTextBlock" Text="Ready" FontWeight="Bold" Foreground="Black" ToolTip="Status for Adding, Time, Resetting"/>
+                </StatusBarItem>
+            </StatusBar>
+            <TextBlock x:Name="ResultBox"  Width="205" Background="#FF85A8FF" Height="36"/>
+
+
         </StackPanel>
+        <Label Content="Result Box" HorizontalAlignment="Left" Margin="725,0,0,0" VerticalAlignment="Center" Grid.Row="1" ToolTip="Displays it works when added a car"/>
 
         <!-- Status Bar/Updated Bar-->
 
