@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 // AUTHOR: Kyle Angeles
-// DATE: 10/12/2025
+// DATE: 10/6/2025
 // DESCRIPTION: Creating a wpf application that manages a list of cars using collections or arrays
 // DESCRIPTION: Using concepts of Object-Oriented Programming (OOP) such as classes and objects.
 // Version: 1.0
@@ -53,7 +53,7 @@ namespace CarListManagement
 
             // Updating the status bar to indicate the application has loaded
             UpdateStatusBar("Application Loaded");
-            string[] carMakes =
+            string[] VehicleMakes =
             {
                 "Scion",
                 "Dodge",
@@ -67,11 +67,18 @@ namespace CarListManagement
                 "Aston Martin",
                 "Porsche",
                 "Mitsubishi",
+                // JetSki Brands
+                "Yamaha",
+                "Sea-Doo",
+                "Kawasaki",
+                "Honda",
+                "Suzuki",
+                "Krash"
 
             };
 
             // Setting the ComboBox's item source to the list of car makes
-            MakeCar.ItemsSource = carMakes;
+            MakeCar.ItemsSource = VehicleMakes;
             MakeCar.SelectedIndex = 0;  // Default to the first item (E.G Scion)
 
 
