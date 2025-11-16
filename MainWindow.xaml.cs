@@ -49,6 +49,9 @@ namespace CarListManagement
             // Setting car objects to the array
             // Using an array for the drop down menu
             // This showcases an array of listed car brands
+
+            // Updating the status bar to indicate the application has loaded
+            UpdateStatusBar("Application Loaded");
             string[] carMakes =
             {
                 "Scion",
@@ -172,6 +175,8 @@ namespace CarListManagement
 
                     MessageBox.Show($"Car modified: {existingCar}", "Success");
 
+                    UpdateStatusBar("Car details updated.");
+
 
 
                 }
@@ -191,18 +196,18 @@ namespace CarListManagement
             // Catching the ArgumentNullException for the model property in Vehicle.cs
             catch (ArgumentNullException ex)
             {
-                MessageBox.Show(ex.Message, "Missing Model");
+                UpdateStatusBar("Error: Car model cannot be empty.");
                 ModelName.Focus();
+
             }
             // Catching for the price proepry from the vehicle.cs file onto the mainwindow.xaml.cs file
             catch (ArgumentOutOfRangeException ex)
             {
-                MessageBox.Show(ex.Message, "Invalid Price");
                 PriceCar.Focus();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"This is an unexcepted error: {ex.Message}", "Error");
+                
             }
         }
 
@@ -291,6 +296,12 @@ namespace CarListManagement
             {
                 List<Car> newCars = listOfCars.Where(car => car.IsNew).ToList();
             }
+        }
+
+        private void UpdateStatusBar(string message)
+        {
+            string timestamp = DateTime.Now.ToString("hh:mm tt");
+            StatusTextBlock.Text = $"{timestamp} - {message}";
         }
     }
 }
