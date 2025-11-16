@@ -246,10 +246,26 @@ namespace CarListManagement
             }
         }
 
+        /// <summary>
+        /// This function is used to update the status bar with a message and timestamp.
+        /// for each of the tab headers within the window, adding cars/vehicles, resetting the form, and exiting the application.
+        /// </summary>
+        /// <param name="message"></param>
         private void UpdateStatusBar(string message)
         {
             string timestamp = DateTime.Now.ToString("hh:mm tt");
             StatusTextBlock.Text = $"{timestamp} - {message}";
         }
+
+        /// <summary>
+        /// Statistics tab to calculate statistics of the cars in the list
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Statistics(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateStatusBar("Calculating statistics...");
+        }
+
     }
 }

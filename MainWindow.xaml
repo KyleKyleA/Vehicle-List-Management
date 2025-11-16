@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <!-- Tabs for the following headings -->
-        <TabControl Grid.Row="0" Margin="20,19,25,1" Background="White" BorderThickness="0">
+        <TabControl Grid.Row="0" Margin="25,14,20,6" Background="White" BorderThickness="0" RenderTransformOrigin="0.543,0.559">
 
             <!-- Input Tab -->
             <TabItem Header="Car Input">
@@ -106,17 +106,20 @@
                 </Grid>
             </TabItem>
 
-            <!-- Statistics or Inventory Data -->
+            <!-- Statistics Tab -->
             <TabItem Header="Statistics">
-                <Grid  Background="White" Margin="15">
-                    <StackPanel Margin="10">
-                        <Label x:Name="TotalNumberofVehicles" Content="Total Number of Vehicles: " FontWeight="Bold" FontSize="14" Margin="0,5"/>
-                        <Label x:Name="TotalPriceOfVehicles" Content="Total Price of Vehicles Entered: " FontWeight="Bold" FontSize="14" Margin="0.5"/>
-                        <Label x:Name="AveragePriceOfVehicles" Content="Average Price of Vehicles: " FontWeight="Bold" FontSize="14" Margin="0,5"/>
-                    </StackPanel>
+                <Grid Background="AntiqueWhite" Margin="31,0,24,0" Height="268">
+                    <Label Content="Number of Vehicles:" FontSize="15" FontWeight="Bold" Margin="18,0,22,238"/>
+                    <TextBlock x:Name="VehicleNumber" HorizontalAlignment="Left" Margin="177,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Foreground="{x:Null}" Background="White"/>
+                    <Label Content="Total Price of Entered Vehicles:" HorizontalAlignment="Left" Margin="7,37,0,0" VerticalAlignment="Top" Width="188" FontWeight="Bold"/>
+                    <TextBlock x:Name="TotalPrice" HorizontalAlignment="Left" Margin="197,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" Background="White"/>
+                    <Label Content="Average Price of Vehicles: " HorizontalAlignment="Left" Margin="14,68,0,0" VerticalAlignment="Top" Width="158" FontWeight="Bold"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="173,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" Background="White"/>
                 </Grid>
             </TabItem>
         </TabControl>
+        <!-- Statistics or Inventory Data -->
+
 
 
 

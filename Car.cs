@@ -55,7 +55,7 @@ namespace ClassExercise4Inheritance
         /// <returns> "The Car details "</returns>
         public override string GetDescription()
         {
-            return $"The car was made in the {Year}. And the car {Model} and the creator of the car is {Make} {(IsNew ? "New " : "Used")} and the total (${Price})";
+            return $"The car was made in the {Year}. And the car {Model} and the creator of the car is {Make} {(IsNew ? "New " : "Used")} and the total (${Price}) and the vehicle {VehicleType}";
 
 
         }
