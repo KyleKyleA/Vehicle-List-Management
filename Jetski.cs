@@ -37,13 +37,14 @@ namespace ClassExercise4Inheritance
         /// </summary>
         public int MaxSpeed
         {
-            get { return MaxSpeed; }
+            get { return maxSpeed; }
             set {
                 if (value < 0)
                 {
                     throw new ArgumentOutOfRangeException("Max Speed cannot be negative.");
                 }
-                MaxSpeed = value;  } //Getting the max speed in Km/h since we are canadian
+                maxSpeed = value;  
+            } //Getting the max speed in Km/h since we are canadian
         }
 
         // Overrides the VehicleType property to return "Jetski"

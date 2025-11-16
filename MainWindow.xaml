@@ -105,6 +105,7 @@
                             <DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="120"/>
                             <DataGridTextColumn Header="Year" Binding="{Binding Year}" Width="80"/>
                             <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" Width="100"/>
+                            <DataGridTextColumn Header="Max Speed" Binding="{Binding MaxSpeed, StringFormat=N0}" Width="100"/> 
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -114,7 +115,7 @@
             <TabItem Header="Statistics" >
                 <Grid Background="AntiqueWhite" Margin="16,0,15,0" Height="269">
                     <Label Content="Number of Vehicles:" FontSize="15" FontWeight="Bold" Margin="18,0,22,238"/>
-                    <TextBlock x:Name="VehicleNumber" HorizontalAlignment="Left" Margin="177,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Foreground="{x:Null}" Background="White"/>
+                    <TextBlock x:Name="VehicleNumber" HorizontalAlignment="Left" Margin="177,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Background="White"/>
                     <Label Content="Total Price of Entered Vehicles:" HorizontalAlignment="Left" Margin="7,37,0,0" VerticalAlignment="Top" Width="188" FontWeight="Bold"/>
                     <TextBlock x:Name="TotalPrice" HorizontalAlignment="Left" Margin="197,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" Background="White"/>
                     <Label Content="Average Price of Vehicles: " HorizontalAlignment="Left" Margin="14,68,0,0" VerticalAlignment="Top" Width="158" FontWeight="Bold"/>
