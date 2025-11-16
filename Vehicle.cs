@@ -20,7 +20,8 @@ namespace ClassExercise4Inheritance
         protected Boolean isNew;
         protected static int vehicleCount = 0;
         protected int vehicleID;
-    
+        protected string vehicleType;
+
 
 
         // Default Constructor 
@@ -42,14 +43,15 @@ namespace ClassExercise4Inheritance
         /// <param name="price"></param>
         /// <param name="isNew"></param>
         /// <param name="vehicleID"></param>
-        public Vehicle(string make, string model, int year, decimal price, bool isNew, int vehicleID)
+        public Vehicle(string make, string model, int year, decimal price, bool isNew, int vehicleID, string vehicleType)
         {
             this.Make = make;
             this.Model = model;
             this.Year = year;
             this.Price = price;
             this.IsNew = IsNew;
-            
+            this.VehicleType = VehicleType;
+
             // Increment and count the vehicleID
             vehicleCount++;
             this.vehicleID = vehicleCount;
@@ -153,10 +155,21 @@ namespace ClassExercise4Inheritance
         /// <summary>
         /// This gets the Vehicle ID to be displayed onto the data grid
         /// </summary>
-        public int VehicleID { 
+        public int CarID { 
             
            get { return vehicleID; } 
         }
+
+        /// <summary>
+        /// Property for the vehicle type
+        /// </summary>
+        /// <returns></returns>
+        public string VehicleType
+        {
+            get { return vehicleType; }
+            set { vehicleType = value; }
+        }
+
 
         // Abstract
         public abstract string GetDescription();

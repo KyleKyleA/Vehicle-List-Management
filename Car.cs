@@ -35,6 +35,7 @@ namespace ClassExercise4Inheritance
         public Car(string make, string model, int year, decimal price, bool isNew)
             : base(make, model, year, price, isNew)
         {
+            this.VehicleType = vehicleType;
         }
 
 
@@ -45,6 +46,7 @@ namespace ClassExercise4Inheritance
             this.year = year;
             this.price = price;
             this.IsNew = isNew;
+            vehicleType = vehicleType;
         }
 
         ///<summary>

@@ -132,7 +132,9 @@ namespace CarListManagement
         /// <param name="e"></param>
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-        
+
+            string vehicleType =
+            ((ComboBoxItem)VehicleTypeComboBox.SelectedItem).Content.ToString();
 
             // Gather data from input controls (make, model, price, and isnew)
             try
@@ -147,8 +149,7 @@ namespace CarListManagement
                 if (currentIndex == -1)
                 {
 
-
-                    // entering a new car entry - Create and add it
+                    
                     Car newCar = new Car(make, model, year, price, isNew);
 
                     listOfCars.Add(newCar);
@@ -161,9 +162,8 @@ namespace CarListManagement
                 else
                 {
 
-
+                    // Update existing car details
                     Car existingCar = listOfCars[currentIndex];
-                    // Combined the existing cars to actually you can update them based of the 
                     existingCar.UpdateCar(make, model, year, price, isNew);
 
                     MessageBox.Show($"Car modified: {existingCar}", "Success");
