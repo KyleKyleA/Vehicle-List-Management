@@ -153,29 +153,49 @@ namespace CarListManagement
                     if (vehicleType == "Car")
                     {
                         // Create a new Car Obkect and add it to the list
-                        newVehicle = new Car(make, model, year, price, isNew, vehicleType)
+                        newVehicle = new Car(make, model, year, price, isNew);
+
+                    }
+                    else if (vehicleType == "Jetski")
+                    {
+                        // Create a new Jetski Object and add to the list
+                        int maxSpeed = 100; // Default max speed for Jetski for example
+                        newVehicle = new Jetski(make, model, year, price, isNew, maxSpeed);
+                    }
+                    else
+                    {
+                        throw new Exception("Unsupported vehicle type.");
+
                     }
 
 
-
-
                     // Display confirmation message using the car's ToString() method
-                    MessageBox.Show($"Car added: {NewCar}", "Success");
-                    UpdateStatusBar("New car added to inventory.");
+                    listOfVehicles.Add(newVehicle);
+                    MessageBox.Show($"Vehicle added: {newVehicle}", "Success");
+                    UpdateStatusBar("New Vehicle added to inventory.");
                     ResultBox.Text = "It Worked";
                 }
                 else
                 {
 
                     // Update existing car details
-                    Car existingCar = listOfCars[currentIndex];
-                    existingCar.UpdateCar(make, model, year, price, isNew);
-                 
+                    Vehicle exisitng = listOfVehicles[currentIndex];
+                    if (exisitng is Car car)
+                    {
+                        car.UpdateCar(make, model, year, price, isNew);
+                    } else if (exisitng is Jetski jetski)
+                    {
+                        jetski.Make = make;
+                        jetski.Model = model;
+                        jetski.Year = year;
+                        jetski.Price = price;
+                        jetski.IsNew = isNew;
+                        jetski.MaxSpeed = 120; // Example max speed update // TextBox later
 
-                    MessageBox.Show($"Car modified: {existingCar}", "Success");
-
+                        
+                    }
+                    MessageBox.Show($"Vehicle has been modified: {exisitng}", "Success");
                     UpdateStatusBar("Car details updated.");
-
 
 
                 }
@@ -195,7 +215,7 @@ namespace CarListManagement
             // Catching the ArgumentNullException for the model property in Vehicle.cs
             catch (ArgumentNullException ex)
             {
-                UpdateStatusBar("Error: Car model cannot be empty.");
+                UpdateStatusBar("Error:  model cannot be empty.");
                 ModelName.Focus();
 
             }
@@ -211,7 +231,7 @@ namespace CarListManagement
             }
 
             dgCarInventory.ItemsSource = null;
-            dgCarInventory.ItemsSource = listOfCars;
+            dgCarInventory.ItemsSource = listOfVehicles;
             UpdateStatistics();
 
         }
@@ -232,19 +252,18 @@ namespace CarListManagement
 
             if (dgCarInventory.SelectedIndex != -1)
             {
+                // Cars selected from the datagrid
                 currentIndex = dgCarInventory.SelectedIndex;
-                Car selectedCar = (Car)dgCarInventory.SelectedItem;
+                Vehicle selectedCar = (Vehicle)dgCarInventory.SelectedItem;
                 MakeCar.Text = selectedCar.Make;
                 ModelName.Text = selectedCar.Model;
                 CarYear.Text = selectedCar.Year.ToString();
                 PriceCar.Text = selectedCar.Price.ToString("F2");
                 NewOrUsed.IsChecked = selectedCar.IsNew;
 
-
-
             }
 
-            
+
         }
 
         ///<summary>
@@ -258,7 +277,8 @@ namespace CarListManagement
 
             if (checkBox != null && checkBox.IsChecked == true)
             {
-                List<Car> newCars = listOfCars.Where(car => car.IsNew).ToList();
+                // Fix: Use OfType<Car>() to filter only Car objects from listOfVehicles
+                List<Car> newCars = listOfVehicles.OfType<Car>().Where(car => car.IsNew).ToList();
             }
         }
 
@@ -281,8 +301,8 @@ namespace CarListManagement
         private void UpdateStatistics()
         {
           // Calculate statistics
-          int total = listOfCars.Count();
-          decimal totalPrice = listOfCars.Sum(c => c.Price);
+          int total = listOfVehicles.Count();
+          decimal totalPrice = listOfVehicles.Sum(c => c.Price);
           decimal averagePrice = total > 0 ? totalPrice / total : 0;
 
             // Update the statistics display

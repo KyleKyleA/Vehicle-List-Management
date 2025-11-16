@@ -32,8 +32,8 @@ namespace ClassExercise4Inheritance
         /// <param name="year"></param>
         /// <param name="price"></param>
         /// <param name="isNew"></param>
-        public Car(string make, string model, int year, decimal price, bool isNew, string vehicleType)
-            : base(make, model, year, price, isNew, vehicleType)
+        public Car(string make, string model, int year, decimal price, bool isNew)
+            : base(make, model, year, price, isNew)
         {
            
         }
@@ -46,21 +46,22 @@ namespace ClassExercise4Inheritance
             this.year = year;
             this.price = price;
             this.IsNew = isNew;
-            vehicleType = vehicleType;
+            
         }
 
+        // Overrides the VehicleType property to return "Car"
         public override string VehicleType
         {
-            get { return "Car"; }
-            
-        }   
+            get { return "Car "; }
+        }
+
         ///<summary>
         /// What this function does it overrid the string method to display the car details 
         ///</summary>
         /// <returns> "The Car details "</returns>
         public override string GetDescription()
         {
-            return $"The car was made in the {Year}. And the car {Model} and the creator of the car is {Make} {(IsNew ? "New " : "Used")} and the total (${Price}) and the vehicle {VehicleType}";
+            return $"Vehicle Type: {VehicleType}The car was made in the {Year}. And the car {Model} and the creator of the car is {Make} {(IsNew ? "New " : "Used")} and the total (${Price})";
 
 
         }
