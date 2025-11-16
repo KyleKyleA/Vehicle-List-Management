@@ -5,21 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClassExercise4Inheritance"
         mc:Ignorable="d"
-        Title="Car Inventory" Height="450" Width="800"
+        Title="Vehicle Inventory" Height="450" Width="800"
         Loaded="Window_Loaded"
         ResizeMode="CanResize">
 
     <Grid Background="#FF1A86FF" Margin="0,0,0,-1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="9*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Tabs for the following headings -->
-        <TabControl Grid.Row="0" Margin="25,14,15,61" Background="White" BorderThickness="0" RenderTransformOrigin="0.543,0.559" Grid.RowSpan="2">
+        <TabControl Grid.Row="0" Margin="25,14,15,61" Background="White" BorderThickness="0" RenderTransformOrigin="0.543,0.559" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
             <!-- Input Tab -->
-            <TabItem Header="Car Input">
+            <TabItem Header="Vehicle Input">
                 <Grid Background="White" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -73,18 +77,19 @@
                         <ComboBoxItem Content="Car" IsSelected="True"/>
                         <ComboBoxItem Content="Jetski"/>
                     </ComboBox>
+                    <!-- Bottom Button Stack Panel Which are Enter and Reset Buttons Only in -->
                     <Button x:Name="EnterBtn" Content="_Enter" Width="100" Height="40"
-     Click="EnterBtn_Click" ToolTip="Helps with entering an existing or new car entry" Margin="244,97,-22,-80" Grid.Row="4" Grid.Column="1"/>
+                        Click="EnterBtn_Click" ToolTip="Helps with entering an existing or new car entry" Margin="244,97,-22,-80" Grid.Row="4" Grid.Column="1"/>
                     <!-- Bottom Button Stack Panel-->
                     <Button x:Name="ResetBtn" Content="Rese_t" Width="100" Height="40" Margin="342,97,-142,-80"
-     Click="ResetBtn_Click" ToolTip="Helps with resetting the window" Grid.Row="4" Grid.Column="1"/>
+                    Click="ResetBtn_Click" ToolTip="Helps with resetting the window" Grid.Row="4" Grid.Column="1"/>
 
                 </Grid>
             </TabItem>
 
 
             <!-- Data Grid Tab -->
-            <TabItem Header="Car Inventory">
+            <TabItem Header="Vehicle Inventory">
                 <Grid Background="White" Margin="15">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="13*"/>
@@ -105,14 +110,14 @@
                             <DataGridTextColumn Header="Model" Binding="{Binding Model}" Width="120"/>
                             <DataGridTextColumn Header="Year" Binding="{Binding Year}" Width="80"/>
                             <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" Width="100"/>
-                            <DataGridTextColumn Header="Max Speed" Binding="{Binding MaxSpeed, StringFormat=N0}" Width="100"/> 
+                            <DataGridTextColumn Header="Max Speed" Binding="{Binding MaxSpeed, StringFormat=N0}" Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
             </TabItem>
 
             <!-- Statistics Tab -->
-            <TabItem Header="Statistics" >
+            <TabItem Header=" Vehicle Statistics" >
                 <Grid Background="AntiqueWhite" Margin="16,0,15,0" Height="269">
                     <Label Content="Number of Vehicles:" FontSize="15" FontWeight="Bold" Margin="18,0,22,238"/>
                     <TextBlock x:Name="VehicleNumber" HorizontalAlignment="Left" Margin="177,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Background="White"/>
@@ -133,7 +138,7 @@
 
         <!-- Botton Panel -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left"
-                Margin="10,25,0,10" Width="800">
+                Margin="10,25,0,10" Width="800" Grid.ColumnSpan="2">
             <!-- StatusBar docked to the left -->
             <StatusBar x:Name="UpdateStatus" DockPanel.Dock="Left" Width="250" Background="#FF85A8FF" Height="35">
                 <StatusBarItem Height="35" Width="500" Margin="0,-4,0,5">
@@ -144,7 +149,7 @@
 
 
         </StackPanel>
-        <Label Content="Result Box" HorizontalAlignment="Left" Margin="725,0,0,0" VerticalAlignment="Center" Grid.Row="1" ToolTip="Displays it works when added a car" Width="65" Height="29"/>
+        <Label Content="Result Box" HorizontalAlignment="Left" Margin="645,0,0,0" VerticalAlignment="Center" Grid.Row="1" ToolTip="Displays it works when added a car" Width="65" Height="29" Grid.Column="1"/>
 
         <!-- Status Bar/Updated Bar-->
 

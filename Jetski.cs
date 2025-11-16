@@ -55,7 +55,7 @@ namespace ClassExercise4Inheritance
         // Returns the description of the JetSki
         public override string GetDescription()
         {
-            return $"The Jetski was made in {Year} and the {Model} along with the Jetski's {Make} {(IsNew ? "New " : "Used")} and the (${Price:F2}) further the Max Speed is : {MaxSpeed} km/h"; ;
+            return $"Jetski {Model} ({Year}) by {Make} — {JumpForce} jump force, {MaxSpeed} km/h, {(IsNew ? "New" : "Used")}, ${Price:F2}";
         }
 
         // Added a feature that is incompared to the other vehicles in this case

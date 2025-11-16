@@ -255,7 +255,7 @@ namespace CarListManagement
         ///</summary>
         private void dgCarInventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateStatusBar("Car selected from inventory.");
+            UpdateStatusBar("Vehicle selected from inventory.");
 
             if (dgCarInventory.SelectedIndex != -1)
             {
@@ -280,6 +280,7 @@ namespace CarListManagement
         ///<param name="e"></param>
         private void NewOrUsed_Checked(object sender, RoutedEventArgs e)
         {
+            UpdateStatusBar("Filtering new cars.");
             CheckBox checkBox = (CheckBox)sender;
 
             if (checkBox != null && checkBox.IsChecked == true)
