@@ -214,6 +214,8 @@ namespace CarListManagement
         ///</summary>
         private void dgCarInventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            UpdateStatusBar("Car selected from inventory.");
+
             if (dgCarInventory.SelectedIndex != -1)
             {
                 currentIndex = dgCarInventory.SelectedIndex;
@@ -265,6 +267,25 @@ namespace CarListManagement
         private void Statistics(object sender, SelectionChangedEventArgs e)
         {
             UpdateStatusBar("Calculating statistics...");
+
+            if (dgCarInventory.ItemsSource is IEnumerable<Car> cars)
+            {
+                int total = cars.Count();
+                decimal totalPrice = cars.Sum(c => c.Price);
+                decimal averagePrice = total > 0 ? totalPrice / total : 0;
+
+                VehicleNumber.Text = total.ToString();
+                TotalPrice.Text = totalPrice.ToString("C2");
+                AveragePrice.Text = averagePrice.ToString("C2");
+            }
+            else
+            {
+                VehicleNumber.Text = "N/A";
+                TotalPrice.Text = "N/A";
+                AveragePrice.Text = "N/A";
+            }
+
+            UpdateStatusBar("Statistics updated.");
         }
 
     }

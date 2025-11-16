@@ -114,11 +114,11 @@
                     <Label Content="Total Price of Entered Vehicles:" HorizontalAlignment="Left" Margin="7,37,0,0" VerticalAlignment="Top" Width="188" FontWeight="Bold"/>
                     <TextBlock x:Name="TotalPrice" HorizontalAlignment="Left" Margin="197,42,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" Background="White"/>
                     <Label Content="Average Price of Vehicles: " HorizontalAlignment="Left" Margin="14,68,0,0" VerticalAlignment="Top" Width="158" FontWeight="Bold"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="173,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" Background="White"/>
+                    <TextBlock x:Name="AveragePrice" HorizontalAlignment="Left" Margin="173,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" Background="White"/>
                 </Grid>
             </TabItem>
         </TabControl>
-        <!-- Statistics or Inventory Data -->
+       
 
 
 
