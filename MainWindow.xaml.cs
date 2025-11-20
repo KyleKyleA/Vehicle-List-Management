@@ -50,11 +50,11 @@ namespace CarListManagement
             // Setting car objects to the array
             // Using an array for the drop down menu
             // This showcases an array of listed car brands
-
             // Updating the status bar to indicate the application has loaded
             UpdateStatusBar("Application Loaded");
             string[] VehicleMakes =
             {
+                // Car Brands
                 "Scion",
                 "Dodge",
                 "VolksWagen",
@@ -140,7 +140,7 @@ namespace CarListManagement
         /// <param name="e"></param>
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            // This just determines the selection of vehicle type from the combo box 
             string vehicleType =
             ((ComboBoxItem)VehicleTypeComboBox.SelectedItem).Content.ToString();
 
@@ -280,7 +280,7 @@ namespace CarListManagement
         ///<param name="e"></param>
         private void NewOrUsed_Checked(object sender, RoutedEventArgs e)
         {
-            UpdateStatusBar("Filtering new cars.");
+            UpdateStatusBar("Filtering new vehicles.");
             CheckBox checkBox = (CheckBox)sender;
 
             if (checkBox != null && checkBox.IsChecked == true)
@@ -309,8 +309,8 @@ namespace CarListManagement
         private void UpdateStatistics()
         {
           // Calculate statistics
-          int total = listOfVehicles.Count();
-          decimal totalPrice = listOfVehicles.Sum(c => c.Price);
+          var total = listOfVehicles.Count();
+          var totalPrice = listOfVehicles.Sum(c => c.Price);
           decimal averagePrice = total > 0 ? totalPrice / total : 0;
 
             // Update the statistics display
