@@ -140,20 +140,25 @@ namespace CarListManagement
         /// <param name="e"></param>
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
-            // This just determines the selection of vehicle type from the combo box 
-            string vehicleType =
-            ((ComboBoxItem)VehicleTypeComboBox.SelectedItem).Content.ToString();
+            
+          
+           
 
+            // Try and catch block to handle exceptions between the car input or the vehicle input
             // Gather data from input controls (make, model, price, and isnew)
             try
             {
+                string vehicleType = VehicleTypeComboBox.Text; // This just determines the selection of vehicle type from the combo box 
                 string make = MakeCar.SelectedItem.ToString();
                 string model = ModelName.Text.Trim();
                 int year = (int)CarYear.SelectedItem;
                 decimal price = decimal.Parse(PriceCar.Text.Trim());
                 bool isNew = NewOrUsed.IsChecked == true;
 
+                // Create a vehicle object
+                // instead of car object from the last assignment
                 Vehicle newVehicle;
+
                 // Check if this is a new entry or existing entry
                 if (currentIndex == -1) 
                 {
@@ -171,6 +176,7 @@ namespace CarListManagement
                     }
                     else
                     {
+                        // Handles unsupported vehicle types
                         throw new Exception("Unsupported vehicle type.");
 
                     }
