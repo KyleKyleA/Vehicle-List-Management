@@ -186,6 +186,8 @@ namespace CarListManagement
                 {
 
                     // Update existing car details
+                    // What this does is it checks the type of vehicle the user inputs
+                    // later updates it accordingly to the details inputted by the user
                     Vehicle exisitng = listOfVehicles[currentIndex];
                     if (exisitng is Car car)
                     {
@@ -207,6 +209,7 @@ namespace CarListManagement
 
                 }
 
+                // old code from pervious assignment 
                 // Clears the datagrid
                 //dgCarInventory.Items.Clear();
 
