@@ -60,14 +60,19 @@ namespace ClassExercise4Inheritance
 
 
 
-        // Static Property which is the Vehicle Count 
-        // Counts for all general vehicles
+        /// <summary>
+        /// Static Property which is the Vehicle Count 
+        ///  Counts for all general vehicles
+        /// </summary>
+
         public static int Count
         {
             get { return vehicleCount; }
         }
         
-        // Public property for the Car Make
+        /// <summary>
+        /// Public property for the Car Make
+        /// </summary>
         public string Make
         {
             get { return make; }
@@ -151,7 +156,10 @@ namespace ClassExercise4Inheritance
         }
 
 
-        // Abstract
+        /// <summary>
+        /// Abstract method to get the description from the car class and the vehicle class
+        /// </summary>
+        /// <returns></returns>
         public abstract string GetDescription();
 
     }

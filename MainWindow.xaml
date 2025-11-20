@@ -146,11 +146,11 @@
                 </StatusBarItem>
             </StatusBar>
             <TextBlock x:Name="ResultBox"  Width="205" Background="#FF85A8FF" Height="36"/>
-
+            <Label Content="Result Box" HorizontalAlignment="Left" Margin="645,0,0,0" VerticalAlignment="Center" Grid.Row="1" ToolTip="Displays it works when added a car" Width="65" Height="29" Grid.Column="1"/>
 
         </StackPanel>
-        <Label Content="Result Box" HorizontalAlignment="Left" Margin="645,0,0,0" VerticalAlignment="Center" Grid.Row="1" ToolTip="Displays it works when added a car" Width="65" Height="29" Grid.Column="1"/>
-
+       
+     
         <!-- Status Bar/Updated Bar-->
 
 

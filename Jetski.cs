@@ -12,7 +12,9 @@ namespace ClassExercise4Inheritance
 {
     public class Jetski : Vehicle
     {
-       
+        //Private Variables 
+        // Using Random function to generate a randomize max speed
+        private static Random rand = new Random();
         private int maxSpeed;
 
         /// <summary>
@@ -28,7 +30,7 @@ namespace ClassExercise4Inheritance
         /// <param name="maxSpeed"></param>
         public Jetski(string make, string model, int year, decimal price, bool isNew, int maxSpeed) : base (make, model,year, price, isNew)
         {
-            MaxSpeed = maxSpeed;
+            MaxSpeed = rand.Next(40, 130); // Random max speed between 40 and 130 Km/h
 
         }
 
@@ -47,21 +49,31 @@ namespace ClassExercise4Inheritance
             } //Getting the max speed in Km/h since we are canadian
         }
 
-        // Overrides the VehicleType property to return "Jetski"
+        /// <summary>
+        /// Overrides the VehicleType property to return "Jetski"
+        /// </summary>
         public override string VehicleType
         {
             get { return "Jetski"; }
         }
-        // Returns the description of the JetSki
+        /// <summary>
+        /// Returns the description of the JetSki
+        /// </summary>
+        /// <returns></returns>
         public override string GetDescription()
         {
-            return $"Jetski {Model} ({Year}) by {Make} — {JumpForce} jump force, {MaxSpeed} km/h, {(IsNew ? "New" : "Used")}, ${Price:F2}";
+            return $"Jetski {Model} ({Year}) by {Make} — Max Speed: {MaxSpeed} km/h, {(IsNew ? "New" : "Used")}, ${Price:F2}";
         }
-
-        // Added a feature that is incompared to the other vehicles in this case
-        public void JumpForce()
+        
+        /// <summary>
+        /// Overrides the ToString method
+        /// to return the description of the JetSki
+        ///  When the user inputs the object 
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
         {
-            Console.WriteLine($"{Make} {Model} jumps over a wave with at speeds of {MaxSpeed} km/h!");
+            return GetDescription();
         }
 
 

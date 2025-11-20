@@ -67,6 +67,7 @@ namespace CarListManagement
                 "Aston Martin",
                 "Porsche",
                 "Mitsubishi",
+                
                 // JetSki Brands
                 "Yamaha",
                 "Sea-Doo",
@@ -111,6 +112,8 @@ namespace CarListManagement
         ///</summary>
         private void ResetForm()
         {
+            
+
             MakeCar.SelectedIndex = -1;
             ModelName.Clear();
             CarYear.SelectedIndex = -1;
@@ -129,6 +132,8 @@ namespace CarListManagement
         // Reset button event handler
         private void ResetBtn_Click(object sender, RoutedEventArgs e)
         {
+            //  Reset all input fields to their default state
+            UpdateStatusBar("Resetted the fields");
             ResetForm();
         }
 
@@ -141,8 +146,6 @@ namespace CarListManagement
         private void EnterBtn_Click(object sender, RoutedEventArgs e)
         {
             
-          
-           
 
             // Try and catch block to handle exceptions between the car input or the vehicle input
             // Gather data from input controls (make, model, price, and isnew)
@@ -194,11 +197,11 @@ namespace CarListManagement
                     // Update existing car details
                     // What this does is it checks the type of vehicle the user inputs
                     // later updates it accordingly to the details inputted by the user
-                    Vehicle exisitng = listOfVehicles[currentIndex];
-                    if (exisitng is Car car)
+                    Vehicle existing = listOfVehicles[currentIndex];
+                    if (existing is Car car)
                     {
                         car.UpdateCar(make, model, year, price, isNew);
-                    } else if (exisitng is Jetski jetski)
+                    } else if (existing is Jetski jetski)
                     {
                         jetski.Make = make;
                         jetski.Model = model;
@@ -209,7 +212,7 @@ namespace CarListManagement
 
                         
                     }
-                    MessageBox.Show($"Vehicle has been modified: {exisitng}", "Success");
+                    MessageBox.Show($"Vehicle has been modified: {existing}", "Success");
                     UpdateStatusBar("Car details updated.");
 
 
@@ -330,7 +333,7 @@ namespace CarListManagement
 
 
             // Update the status bar
-            UpdateStatusBar("Statistics updated.");
+            UpdateStatusBar(" Vehicle Statistics updated.");
         }
 
     }
