@@ -113,7 +113,7 @@
                             <DataGridTextColumn Header="Max Speed" Binding="{Binding MaxSpeed, StringFormat=N0}" Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <!-- Remove button -->
+                    <!-- Remove button --> <!-- Testing to see if the repo works -->
                     <Button Grid.Column="1" HorizontalAlignment="Left" Margin="560,276,0,0" VerticalAlignment="Top"/>
                     <Button x:Name="RemoveButton" Content="Remove" Grid.Column="1" Margin="610,281,8,-7"/>
 
