@@ -336,5 +336,11 @@ namespace CarListManagement
             UpdateStatusBar(" Vehicle Statistics updated.");
         }
 
+        /// <summary>
+        /// Function something to do with the remove button on the inventory tab
+        /// 
+        /// 
+        /// </summary>
+
     }
 }
