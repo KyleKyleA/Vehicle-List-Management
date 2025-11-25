@@ -23,7 +23,7 @@
         <TabControl Grid.Row="0" Margin="25,14,15,61" Background="White" BorderThickness="0" RenderTransformOrigin="0.543,0.559" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
             <!-- Input Tab -->
-            <TabItem Header="Vehicle Input">
+            <TabItem Header="Vehicle Input"> 
                 <Grid Background="White" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
