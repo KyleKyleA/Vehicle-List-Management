@@ -101,7 +101,7 @@
                           HeadersVisibility="Column"
                           AlternatingRowBackground="LightGray"
                           GridLinesVisibility="All"
-                          SelectionChanged="dgCarInventory_SelectionChanged" Grid.ColumnSpan="2">
+                          SelectionChanged="dgCarInventory_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,3,28">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="New" Binding="{Binding IsNew}" Width="60"/>
                             <DataGridTextColumn Header="Vehicle Type" Binding="{Binding VehicleType}" Width="100"/>
@@ -113,6 +113,10 @@
                             <DataGridTextColumn Header="Max Speed" Binding="{Binding MaxSpeed, StringFormat=N0}" Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button Grid.Column="1" HorizontalAlignment="Left" Margin="560,276,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="RemoveButton" Content="Remove" Grid.Column="1" Margin="610,281,8,-7"/>
+
+
                 </Grid>
             </TabItem>
 
@@ -149,9 +153,9 @@
             <Label Content="Result Box" HorizontalAlignment="Left" Margin="645,0,0,0" VerticalAlignment="Center" Grid.Row="1" ToolTip="Displays it works when added a car" Width="65" Height="29" Grid.Column="1"/>
 
         </StackPanel>
-       
-     
-        <!-- Status Bar/Updated Bar-->
+
+
+
 
 
     </Grid>
