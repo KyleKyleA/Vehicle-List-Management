@@ -1,4 +1,5 @@
-﻿using ClassExercise4Inheritance;
+﻿using CarList;
+using ClassExercise4Inheritance;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Security.AccessControl;
@@ -27,13 +28,19 @@ namespace CarListManagement
     /// Interaction logic for MainWindow.xaml
     ///</summary>
     public partial class MainWindow : Window
-    {
+    {   //Private variable
+        // Data storage
+        private VehicleRepo repo = new VehicleRepo();
+
+
         // Using a List to store car objects
         List<Vehicle> listOfVehicles = new List<Vehicle>();
         int currentIndex = -1;
+      
         public MainWindow()
         {
             InitializeComponent();
+            Vehicles = repo.Load();
         }
 
         /// <summary>
