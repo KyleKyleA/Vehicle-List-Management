@@ -1,5 +1,6 @@
 ﻿using CarList;
 using ClassExercise4Inheritance;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Security.AccessControl;
@@ -40,7 +41,12 @@ namespace CarListManagement
         public MainWindow()
         {
             InitializeComponent();
-            Vehicles = repo.Load();
+            
+            // Load Vehicles from JSON file at startup 
+            listOfVehicles = repo.Load();
+
+            
+
         }
 
         /// <summary>
@@ -349,5 +355,17 @@ namespace CarListManagement
         /// 
         /// </summary>
 
+
+        /// <summary>
+        /// Save changes to the json on exit or after changes 
+        /// closing the program 
+        /// </summary>
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            base.OnClosing(e);
+            repo.Save(listOfVehicles);
+        }
+
+      
     }
 }

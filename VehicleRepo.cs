@@ -26,6 +26,7 @@ namespace CarList
             try
             {
                var options = new JsonSerializerOptions { WriteIndented = true };
+               string json = JsonSerializer.Serialize(vehicles, options);
             } catch (Exception ex) 
             {
                Console.WriteLine($"Error saving vehicle: {ex.Message}");
@@ -40,10 +41,10 @@ namespace CarList
             try
             {
                if (!File.Exists(FilePath))
-               return new List<Vehicle>(); //Return empty list if file is missing
+                 return new List<Vehicle>(); //Return empty list if file is missing
 
                string json = File.ReadAllText(FilePath);
-               return JsonSerializer.Deserialize<List<Vehicle>>(json);
+               return JsonSerializer.Deserialize<List<Vehicle>>(json) ?? new List<Vehicle>();
                 
             }catch (Exception ex)
             {
