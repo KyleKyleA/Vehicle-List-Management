@@ -376,12 +376,27 @@ namespace CarListManagement
             {
                 // Vehicle selected from the datagrid
                 Vehicle selectedCar = (Vehicle)dgCarInventory.SelectedItem;
-               
+
+                // Vehicle removed from the inventory
+                listOfVehicles.Remove(selectedCar);
+
+                // Save the JSON
+                repo.Save(listOfVehicles);
+
+                // Refresh the data grid
+                dgCarInventory.ItemsSource = null;
+                dgCarInventory.ItemsSource = listOfVehicles;
+
+                UpdateStatusBar("You've just removed a vehicle from the inventory. ");
+            }
+            else
+            {
+                MessageBox.Show("Please select a vehicle you would like to remove.")
             }
 
 
 
-            UpdateStatusBar("You've just removed a vehicle from the inventory. ");
+            
         }
     }
 }
