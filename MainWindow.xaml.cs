@@ -366,6 +366,22 @@ namespace CarListManagement
             repo.Save(listOfVehicles);
         }
 
-      
+
+        /// <summary>
+        /// Function something to do with the remove button on the inventory tab
+        /// </summary>
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgCarInventory.SelectedIndex != -1)
+            {
+                // Vehicle selected from the datagrid
+                Vehicle selectedCar = (Vehicle)dgCarInventory.SelectedItem;
+               
+            }
+
+
+
+            UpdateStatusBar("You've just removed a vehicle from the inventory. ");
+        }
     }
 }

@@ -115,7 +115,7 @@
                     </DataGrid>
                     <!-- Remove button --> <!-- Testing to see if the repo works -->
                     <Button Grid.Column="1" HorizontalAlignment="Left" Margin="560,276,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="RemoveButton" Content="Remove" Grid.Column="1" Margin="610,281,8,-7"/>
+                    <Button x:Name="RemoveButton" Content="Remove" Grid.Column="1" Margin="610,281,8,0" Height="30" VerticalAlignment="Top" Click="RemoveButton_Click"/>
 
 
                 </Grid>

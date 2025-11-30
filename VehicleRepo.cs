@@ -20,39 +20,67 @@ namespace CarList
         // Private variable
         private readonly string FilePath = "Vehicle.json";
 
-        //Save vehciles to JSON file
+        /// <summary>
+        /// Save vehciles to JSON file
+        /// </summary>
+        /// <param name="vehicles"></param>
         public void Save(List<Vehicle> vehicles)
         {
             try
             {
-               var options = new JsonSerializerOptions { WriteIndented = true };
-               string json = JsonSerializer.Serialize(vehicles, options);
-            } catch (Exception ex) 
+                var options = new JsonSerializerOptions { WriteIndented = true };
+                string json = JsonSerializer.Serialize(vehicles, options);
+            }
+            catch (Exception ex)
             {
-               Console.WriteLine($"Error saving vehicle: {ex.Message}");
+                Console.WriteLine($"Error saving vehicle: {ex.Message}");
 
             }
 
         }
 
-        // Loading File to JSON file
+        /// <summary>
+        /// Loading File to JSON file
+        /// </summary>
+        /// <returns></returns>
         public List<Vehicle> Load()
         {
             try
             {
-               if (!File.Exists(FilePath))
-                 return new List<Vehicle>(); //Return empty list if file is missing
+                if (!File.Exists(FilePath))
+                    return new List<Vehicle>(); //Return empty list if file is missing
 
-               string json = File.ReadAllText(FilePath);
-               return JsonSerializer.Deserialize<List<Vehicle>>(json) ?? new List<Vehicle>();
-                
-            }catch (Exception ex)
+                string json = File.ReadAllText(FilePath);
+                return JsonSerializer.Deserialize<List<Vehicle>>(json) ?? new List<Vehicle>();
+
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine($"Error loading vehicles: {ex.Message}");
                 return new List<Vehicle>();
 
             }
-            
+
+        }
+
+        /// <summary>
+        /// Function to remove the selected vehicle record
+        /// </summary>
+        /// <param name="vehicles"></param>
+        /// <param name="vehicleToRemove"></param>
+        public void Remove(List<Vehicle> vehicles, Vehicle vehicleToRemove)
+
+        {
+
+            if (vehicleToRemove != null)
+            {
+                vehicles.Remove(vehicleToRemove);
+                Save(vehicles);
+            }
+
+
+
         }
     }
 }
+
