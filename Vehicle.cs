@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.Json.Serialization;
 // Author: Kyle Angeles
 // Date: 10/29/25
 // Modified: 11/15/25
 // Description: Abstract Vehicle Class from the Car.cs and other vehicle types to inherit from
 namespace ClassExercise4Inheritance
 {
+    [JsonPolymorphic(TypeDiscriminatorPropertyName = "$type")]
+    [JsonDerivedType(typeof(Car), "Car")]
+    [JsonDerivedType(typeof(Jetski), "Jetski")]
     public abstract class Vehicle
     {
         // protected Variables

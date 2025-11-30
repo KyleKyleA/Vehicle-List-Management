@@ -30,6 +30,8 @@ namespace CarList
             {
                 var options = new JsonSerializerOptions { WriteIndented = true };
                 string json = JsonSerializer.Serialize(vehicles, options);
+
+                File.WriteAllText(FilePath, json);
             }
             catch (Exception ex)
             {

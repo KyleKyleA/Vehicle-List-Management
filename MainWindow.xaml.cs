@@ -34,6 +34,7 @@ namespace CarListManagement
         private VehicleRepo repo = new VehicleRepo();
 
 
+
         // Using a List to store car objects
         List<Vehicle> listOfVehicles = new List<Vehicle>();
         int currentIndex = -1;
@@ -349,12 +350,6 @@ namespace CarListManagement
             UpdateStatusBar(" Vehicle Statistics updated.");
         }
 
-        /// <summary>
-        /// Function something to do with the remove button on the inventory tab
-        /// 
-        /// 
-        /// </summary>
-
 
         /// <summary>
         /// Save changes to the json on exit or after changes 
@@ -372,13 +367,20 @@ namespace CarListManagement
         /// </summary>
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            if (dgCarInventory.SelectedIndex != -1)
-            {
-                // Vehicle selected from the datagrid
-                Vehicle selectedCar = (Vehicle)dgCarInventory.SelectedItem;
+            Vehicle selectedVehicle = dgCarInventory.SelectedItem as Vehicle;
 
-                // Vehicle removed from the inventory
-                listOfVehicles.Remove(selectedCar);
+            if (selectedVehicle == null)
+            {
+                MessageBox.Show("Please select a vehicle to remove.");
+                return;
+            }
+
+            int index = dgCarInventory.SelectedIndex;
+            
+            if (index >= 0 && index < listOfVehicles.Count)
+            {
+                // Remove from the list
+                listOfVehicles.RemoveAt(index);
 
                 // Save the JSON
                 repo.Save(listOfVehicles);
@@ -387,12 +389,19 @@ namespace CarListManagement
                 dgCarInventory.ItemsSource = null;
                 dgCarInventory.ItemsSource = listOfVehicles;
 
+                // Update Current indes, stats bar, and statistics page
+                currentIndex = -1;
+                UpdateStatistics();
                 UpdateStatusBar("You've just removed a vehicle from the inventory. ");
             }
             else
             {
-                MessageBox.Show("Please select a vehicle you would like to remove.")
+                MessageBox.Show("Invalid. please try again.");
             }
+               
+
+           
+            
 
 
 

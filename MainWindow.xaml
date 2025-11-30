@@ -23,7 +23,7 @@
         <TabControl Grid.Row="0" Margin="25,14,15,61" Background="White" BorderThickness="0" RenderTransformOrigin="0.543,0.559" Grid.RowSpan="2" Grid.ColumnSpan="2">
 
             <!-- Input Tab -->
-            <TabItem Header="Vehicle Input"> 
+            <TabItem Header="Vehicle Input">
                 <Grid Background="White" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
@@ -101,7 +101,7 @@
                           HeadersVisibility="Column"
                           AlternatingRowBackground="LightGray"
                           GridLinesVisibility="All"
-                          SelectionChanged="dgCarInventory_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,3,28">
+                          SelectionChanged="dgCarInventory_SelectionChanged" Grid.ColumnSpan="2" Margin="0,0,33,58">
                         <DataGrid.Columns>
                             <DataGridCheckBoxColumn Header="New" Binding="{Binding IsNew}" Width="60"/>
                             <DataGridTextColumn Header="Vehicle Type" Binding="{Binding VehicleType}" Width="100"/>
@@ -113,9 +113,9 @@
                             <DataGridTextColumn Header="Max Speed" Binding="{Binding MaxSpeed, StringFormat=N0}" Width="100"/>
                         </DataGrid.Columns>
                     </DataGrid>
-                    <!-- Remove button --> <!-- Testing to see if the repo works -->
-                    <Button Grid.Column="1" HorizontalAlignment="Left" Margin="560,276,0,0" VerticalAlignment="Top"/>
-                    <Button x:Name="RemoveButton" Content="Remove" Grid.Column="1" Margin="610,281,8,0" Height="30" VerticalAlignment="Top" Click="RemoveButton_Click"/>
+                    <!-- Remove button -->
+                    <!-- Testing to see if the repo works -->
+                    <Button x:Name="RemoveButton" Content="Rem_ove" Grid.Column="1" Margin="585,256,8,0" Height="40" VerticalAlignment="Top" ToolTip="Remove a selected vehicle from the data grid"/>
 
 
                 </Grid>
