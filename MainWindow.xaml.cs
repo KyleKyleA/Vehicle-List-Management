@@ -364,6 +364,7 @@ namespace CarListManagement
 
         /// <summary>
         /// Function something to do with the remove button on the inventory tab
+        /// This is the last thing to fix 
         /// </summary>
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
