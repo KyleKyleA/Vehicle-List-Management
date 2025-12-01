@@ -15,12 +15,26 @@
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Menu Bar-->
+        <Menu Grid.Row="0" Grid.ColumnSpan="2" Background="White">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Click="MenuItem_New_Click"/>
+                <MenuItem Header="_Save" Click="MenuItem_Save_Click"/>
+                <Separator/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Copy" Click="MenuItem_Copy_"
+
+            </MenuItem>
+        </Menu>
+
         <!-- Tabs for the following headings -->
-        <TabControl Grid.Row="0" Margin="25,14,15,61" Background="White" BorderThickness="0" RenderTransformOrigin="0.543,0.559" Grid.RowSpan="2" Grid.ColumnSpan="2">
+        <TabControl Grid.Row="1" Margin="10,6,30,51" Background="White" BorderThickness="0" RenderTransformOrigin="0.543,0.559" Grid.ColumnSpan="2">
 
             <!-- Input Tab -->
             <TabItem Header="Vehicle Input">
