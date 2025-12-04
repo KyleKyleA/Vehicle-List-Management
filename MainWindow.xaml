@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ClassExercise4Inheritance"
+        xmlns:local="clr-namespace:CarListManagement"
         mc:Ignorable="d"
         Title="Vehicle Inventory" Height="450" Width="800"
         Loaded="Window_Loaded"
@@ -20,10 +20,11 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Menu Grid.Row="0" Background="White" FontSize="12" Height="25">
+            <Menu Grid.Row="0" Grid.ColumnSpan ="2" Background="White" FontSize="12" Height="25">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New"/>
-                    <MenuItem Header="_Save"/>
+                    <MenuItem Header="_New" Click="NewMenuItem_Click"/>
+                    <MenuItem Header="_Save" Click="SaveMenuItem_Click"/>
+                    <MenuItem Header="_Open" Click="OpenMenuItem_Click"/>
                     <Separator/>
                 </MenuItem>
                 <MenuItem Header="_Edit">

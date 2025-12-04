@@ -7,6 +7,7 @@ using System.Windows;
 // Two libaries for file reading 
 using System.IO;
 using Microsoft.Win32;
+using System.Windows.Controls; 
 namespace CarList
 {
     internal class MenuBar
@@ -14,7 +15,6 @@ namespace CarList
         public MenuBar() {
 
         }
-
 
 
         public void newFile() {

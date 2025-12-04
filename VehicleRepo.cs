@@ -17,72 +17,71 @@ namespace CarList
 {
     internal class VehicleRepo
     {
-        // Private variable
-        private readonly string FilePath = "Vehicle.json";
-
+        // private variable in this class
+        private static string path = "vehicles.json";
+        
         /// <summary>
-        /// Save vehciles to JSON file
+        /// This function just adds vehicle to local json file
+        /// Referred back to old Java codes to see what i did for saving files
+        /// Referenced Kyle Chapman's code 
         /// </summary>
-        /// <param name="vehicles"></param>
-        public void Save(List<Vehicle> vehicles)
+        /// <param name="newVehicle"></param>
+        /// <returns></returns>
+        internal static bool Add(Vehicle newVehicle)
         {
-            try
-            {
-                var options = new JsonSerializerOptions { WriteIndented = true };
-                string json = JsonSerializer.Serialize(vehicles, options);
-
-                File.WriteAllText(FilePath, json);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error saving vehicle: {ex.Message}");
-
-            }
-
+            string jsonString = JsonSerializer.Serialize(newVehicle);
+            File.AppendAllText("vehicles.json", jsonString);
+            return true;
         }
 
+
         /// <summary>
-        /// Loading File to JSON file
+        /// Load vehicles from the added JSON file
         /// </summary>
         /// <returns></returns>
-        public List<Vehicle> Load()
+        internal static List<Vehicle> Load()
+
         {
-            try
+            if (!File.Exists("vehicles.json"))
             {
-                if (!File.Exists(FilePath))
-                    return new List<Vehicle>(); //Return empty list if file is missing
-
-                string json = File.ReadAllText(FilePath);
-                return JsonSerializer.Deserialize<List<Vehicle>>(json) ?? new List<Vehicle>();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading vehicles: {ex.Message}");
                 return new List<Vehicle>();
-
             }
 
+            string jsonString = File.ReadAllText("vehicles.json");
+            return JsonSerializer.Deserialize<List<Vehicle>>(jsonString) ?? new List<Vehicle>();
         }
 
         /// <summary>
-        /// Function to remove the selected vehicle record
+        /// Save vehicle from the added json file
+        /// when changes are made
         /// </summary>
-        /// <param name="vehicles"></param>
-        /// <param name="vehicleToRemove"></param>
-        public void Remove(List<Vehicle> vehicles, Vehicle vehicleToRemove)
-
+        /// <param name="newVehicle"></param>
+        internal static void Save(Vehicle newVehicle)
         {
+        }
 
-            if (vehicleToRemove != null)
-            {
-                vehicles.Remove(vehicleToRemove);
-                Save(vehicles);
+        internal static void Delete(Vehicle newVehicle)
+        {
+            string path = "vehicles.json";
+
+
+            if (!File.Exists(path)) {
+                return;
             }
 
+            string jsonString = File.ReadAllText(path);
+            List<Vehicle> vehicles = JsonSerializer.Deserialize<List<Vehicle>>(jsonString) ?? new List<Vehicle>();
+
+            vehicles.RemoveAll(v => v.CarID == VehicleToDelete.CarID);
+
+            string updatedJson = JsonSerializer.Serialize(vehicles, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(path, updatedJson);
+
+            Console.WriteLine($"Vehicle with ID: {VehicleToDelete.CarID} deleted.");
 
 
         }
     }
 }
+         
 
