@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+// Two libaries for file reading 
 using System.IO;
-
-
 using Microsoft.Win32;
-using System.Windows.Media.Animation;
 namespace CarList
 {
     internal class MenuBar
@@ -47,6 +45,23 @@ namespace CarList
                 MessageBox.Show("file has been saved: " + path);
             }
         }
+
+        public string openFile(string content)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Text Files (*.txt) | *.txt | All Files (*.*) | *.*",
+            };
+
+            if (openFileDialog.ShowDialog() == true) {
+                string path = openFileDialog.FileName;
+                using (StreamReader reader = new StreamReader(path))
+                {
+                    return reader.ReadToEnd();
+                }
+        }
+            return string.Empty;
+      }
 
 
     public void Copy()
