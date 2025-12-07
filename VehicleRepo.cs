@@ -19,18 +19,20 @@ namespace CarList
     {
         // private variable in this class
         private static string path = "vehicles.json";
-        
+
         /// <summary>
         /// This function just adds vehicle to local json file
         /// Referred back to old Java codes to see what i did for saving files
-        /// Referenced Kyle Chapman's code 
+        /// Referred back to Kyle chapmans code to see how he did it in C#
+        /// then implement it in my own way 
         /// </summary>
         /// <param name="newVehicle"></param>
         /// <returns></returns>
         internal static bool Add(Vehicle newVehicle)
         {
-            string jsonString = JsonSerializer.Serialize(newVehicle);
-            File.AppendAllText("vehicles.json", jsonString);
+            List<Vehicle> vehicles = Load();
+            vehicles.Add(newVehicle);
+            Save(vehicles);
             return true;
         }
 

@@ -404,19 +404,34 @@ namespace CarListManagement
                
 
             /* Menu Bar functions implemnted below*/
-            private void OpenMenuItem_Click(object sender, RoutedEventArgs e) {
+
+
+
+            private void NewMenuItem_Click(object sender, RoutedEventArgs e)
+            {
+                // Clear the current list of vehicles and reset the form
+                listOfVehicles.Clear();
+                dgCarInventory.ItemsSource = null;
+                ResetForm();
+                UpdateStatistics();
+                UpdateStatusBar("New inventory created.");
+        }
+        private void OpenMenuItem_Click(object sender, RoutedEventArgs e) {
                 
-                
+                MenuBar menuBar = new MenuBar();
+                listOfVehicles = menuBar.openFile();
+                dgCarInventory.ItemsSource = listOfVehicles;
+                UpdateStatusBar("that Vehicle from inventory has been loaded.");
 
 
 
-            
-            }
+        }
 
             private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
             {
                 MenuBar menuBar = new MenuBar();
-                menuBar.saveFile("CarInventory.json");
+                menuBar.saveFile(listOfVehicles);
+                UpdateStatusBar("Vehicle inventory has been saved.");
 
 
 
