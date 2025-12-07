@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Security.AccessControl;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,7 +45,7 @@ namespace CarListManagement
             InitializeComponent();
             
             // Load Vehicles from JSON file at startup 
-            listOfVehicles = repo.Load();
+            listOfVehicles = VehicleRepo.Load();
 
             
 
@@ -358,7 +359,7 @@ namespace CarListManagement
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            repo.Save(listOfVehicles);
+            VehicleRepo.Save(listOfVehicles);
         }
 
 
@@ -377,14 +378,14 @@ namespace CarListManagement
             }
 
             int index = dgCarInventory.SelectedIndex;
-            
+
             if (index >= 0 && index < listOfVehicles.Count)
             {
                 // Remove from the list
                 listOfVehicles.RemoveAt(index);
 
                 // Save the JSON
-                repo.Save(listOfVehicles);
+                VehicleRepo.Save(listOfVehicles);
 
                 // Refresh the data grid
                 dgCarInventory.ItemsSource = null;
@@ -399,16 +400,26 @@ namespace CarListManagement
             {
                 MessageBox.Show("Invalid. please try again.");
             }
+        }
                
 
             /* Menu Bar functions implemnted below*/
+            private void OpenMenuItem_Click(object sender, RoutedEventArgs e) {
+                
+                
 
-           
+
+
             
+            }
+
+            private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
+            {
+                MenuBar menuBar = new MenuBar();
+                menuBar.saveFile("CarInventory.json");
 
 
 
-            
         }
     }
 }

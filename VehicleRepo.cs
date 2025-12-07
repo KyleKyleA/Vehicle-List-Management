@@ -56,11 +56,18 @@ namespace CarList
         /// when changes are made
         /// </summary>
         /// <param name="newVehicle"></param>
-        internal static void Save(Vehicle newVehicle)
+        internal static void Save(List<Vehicle> vehicles)
         {
+
+            string jsonString = JsonSerializer.Serialize(vehicles, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(path, jsonString);
         }
 
-        internal static void Delete(Vehicle newVehicle)
+        /// <summary>
+        /// Function to delete vehicle from json file
+        /// </summary>
+        /// <param name="VehicleToDelete"></param>
+        internal static void Delete(Vehicle VehicleToDelete)
         {
             string path = "vehicles.json";
 
