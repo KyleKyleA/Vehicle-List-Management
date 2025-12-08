@@ -382,7 +382,7 @@ namespace CarListManagement
             if (index >= 0 && index < listOfVehicles.Count)
             {
                 // Remove from the list
-                listOfVehicles.RemoveAt(index);
+                listOfVehicles.Remove(selectedVehicle);
 
                 // Save the JSON
                 VehicleRepo.Save(listOfVehicles);
@@ -404,9 +404,6 @@ namespace CarListManagement
                
 
             /* Menu Bar functions implemnted below*/
-
-
-
             private void NewMenuItem_Click(object sender, RoutedEventArgs e)
             {
                 // Clear the current list of vehicles and reset the form
@@ -415,8 +412,13 @@ namespace CarListManagement
                 ResetForm();
                 UpdateStatistics();
                 UpdateStatusBar("New inventory created.");
-        }
-        private void OpenMenuItem_Click(object sender, RoutedEventArgs e) {
+            } 
+            /// <summary>
+            /// Open a file from the menu bar to load a specific file a user wants
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void OpenMenuItem_Click(object sender, RoutedEventArgs e) {
                 
                 MenuBar menuBar = new MenuBar();
                 listOfVehicles = menuBar.openFile();
@@ -425,16 +427,23 @@ namespace CarListManagement
 
 
 
-        }
+            }
 
-            private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Function to save the current list of vehicles inputted onto the data grid
+        /// to a specific file using the MenuBar class saveFile function
+        /// to save it as a json file
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
             {
                 MenuBar menuBar = new MenuBar();
                 menuBar.saveFile(listOfVehicles);
-                UpdateStatusBar("Vehicle inventory has been saved.");
+                UpdateStatusBar("Vehicle inventory has been saved to JSON file.");
 
 
 
-        }
+            }
     }
 }

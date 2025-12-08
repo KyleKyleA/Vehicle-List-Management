@@ -19,8 +19,11 @@ namespace CarList
 
         }
 
-
+        /// <summary>
+        /// Displays a message indicating that a new file has been created.
+        /// </summary>
         public void newFile() {
+
             MessageBox.Show("New file created");
         }
 
@@ -32,21 +35,25 @@ namespace CarList
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog
             {
-                Filter = "JSON (*.json) | *.json | All Files (*.*) | *.*",
-                DefaultExt = ".txt" // Files default saved will be in txt files for now 
+                Filter = "JSON (*.json) | *.json | All Files (*.*) | *.*", // File type filter 
+                DefaultExt = ".json" // Files default saved will be in txt files for now 
             };
 
             if (saveFileDialog.ShowDialog() == true)
             {
-                string path = saveFileDialog.FileName; // Using users file exploere to save files 
+                string path = saveFileDialog.FileName; // Using users file exploer to save files 
                 string jsonString = JsonSerializer.Serialize(vehicles, new JsonSerializerOptions { WriteIndented = true}); // Serializing the list of vehicles to json format
-                using (StreamWriter writer = new StreamWriter(path))
-        
+                File.WriteAllText(path, jsonString);
                 //Confirmation Message
                 MessageBox.Show("File has been saved: " + path);
             }
         }
 
+        /// <summary>
+        /// Opens a file selection dialog to allow the user to select the json file from their file explorer
+        /// and deserializes the content into a list of vehicles
+        /// </summary>
+        /// <returns></returns>
         public List<Vehicle> openFile()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
@@ -58,7 +65,7 @@ namespace CarList
                
                string path = openFileDialog.FileName;
                string jsonString = File.ReadAllText(path);
-                return JsonSerializer.Deserialize<List<Vehicle>>(jsonString) ?? new List<Vehicle>();
+               return JsonSerializer.Deserialize<List<Vehicle>>(jsonString) ?? new List<Vehicle>();
             }
 
             return new List<Vehicle>();
@@ -66,13 +73,19 @@ namespace CarList
         }
 
 
+        /// <summary>
+        /// Displays a message showing that the file has been copy from the data grid 
+        /// and can be use to reinput information from the particular vehicle
+        /// </summary>
         public void Copy()
     {
             MessageBox.Show("File has been copied");
 
     }
-
-    public void Paste()
+        /// <summary>
+        /// Displays a message saying that the file or records from input and datagrid where pasted from clip board 
+        /// </summary>
+        public void Paste()
         {
             MessageBox.Show("pasted from clip board");
         }

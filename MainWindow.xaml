@@ -163,7 +163,7 @@
             <!-- StatusBar docked to the left -->
             <StatusBar x:Name="UpdateStatus" DockPanel.Dock="Left" Width="250" Background="#FF85A8FF" Height="35">
                 <StatusBarItem Height="35" Width="500" Margin="0,-4,0,5">
-                    <TextBlock x:Name="StatusTextBlock" Text="Ready" FontWeight="Bold" Foreground="Black" ToolTip="Status for Adding, Time, Resetting"/>
+                    <TextBlock x:Name="StatusTextBlock" Text="Ready" FontWeight="Bold" Foreground="Black" ToolTip="Status for Adding, Time, Resetting" Width="445"/>
                 </StatusBarItem>
             </StatusBar>
             <TextBlock x:Name="ResultBox"  Width="205" Background="#FF85A8FF" Height="36"/>
