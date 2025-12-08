@@ -436,5 +436,46 @@ namespace CarListManagement
 
 
             }
+
+        /* Copy and paste functions */
+        /// <summary>
+        /// What this does is that it copies the selected vehicle record
+        /// from the data grid onto the clipboard when the user clicks the copy button
+        /// from the menu bar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CopyMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgCarInventory.SelectedItem is Vehicle selectedVehicle)
+            {
+                // Copy vehicle details from data grid to clipboard
+                Clipboard.SetText(selectedVehicle.GetDescription());
+                UpdateStatusBar($"[{DateTime.Now:hh:mm tt]} Copied vehicle details to clipboard."); // Update status bar after user copies 
+            }
+            else
+            {
+                UpdateStatusBar("No vehicle selected to copy.");
+            }
+        }
+
+        /// <summary>
+        /// Handles the paste action from the clipboard after user copies the vehicle details from the data grid 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PasteMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (Clipboard.ContainsText())
+            {
+                string clipboardText = Clipboard.GetText();
+                UpdateStatusBar($"Pasted vehicle details from clipboard:\n{clipboardText}");
+
+            }
+            else
+            {
+                UpdateStatusBar("Clipboard does not contain text data.");
+            }
+        }
     }
 }
