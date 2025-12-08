@@ -130,10 +130,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                     <!-- Remove button -->
-                    <!-- Testing to see if the repo works -->
-                    <Button x:Name="RemoveButton" Content="Rem_ove" Grid.Column="1" Margin="585,256,8,0" Height="40" VerticalAlignment="Top" ToolTip="Remove a selected vehicle from the data grid"/>
-
-
+                    <Button x:Name="RemoveButton" Content="Rem_ove" Grid.Column="1" Margin="585,256,8,0" Height="40" VerticalAlignment="Top" ToolTip="Remove a selected vehicle from the data grid" Click="RemoveButton_Click"/>
                 </Grid>
             </TabItem>
 

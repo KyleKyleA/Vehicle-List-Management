@@ -377,10 +377,6 @@ namespace CarListManagement
                 return;
             }
 
-            int index = dgCarInventory.SelectedIndex;
-
-            if (index >= 0 && index < listOfVehicles.Count)
-            {
                 // Remove from the list
                 listOfVehicles.Remove(selectedVehicle);
 
@@ -396,11 +392,6 @@ namespace CarListManagement
                 UpdateStatistics();
                 UpdateStatusBar("You've just removed a vehicle from the inventory. ");
             }
-            else
-            {
-                MessageBox.Show("Invalid. please try again.");
-            }
-        }
                
 
             /* Menu Bar functions implemnted below*/

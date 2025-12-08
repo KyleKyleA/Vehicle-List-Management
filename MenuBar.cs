@@ -11,6 +11,13 @@ using Microsoft.Win32;
 using System.Windows.Controls;
 using ClassExercise4Inheritance;
 using System.Text.Json;
+
+// Author: Kyle Angeles
+// File: MenuBar.cs
+// Modified: Dec 7st 2025
+// Description: This class handles the new GUI experience that I wanted to do which was to have a menu bar
+// which handles the file operations that a user would expect from a typical application such as creating a new file, open a current saved file, and saving file
+// Along with copy and paste functionality
 namespace CarList
 {
     internal class MenuBar

@@ -44,12 +44,12 @@ namespace CarList
         internal static List<Vehicle> Load()
 
         {
-            if (!File.Exists("vehicles.json"))
+            if (!File.Exists(path))
             {
                 return new List<Vehicle>();
             }
 
-            string jsonString = File.ReadAllText("vehicles.json");
+            string jsonString = File.ReadAllText(path);
             return JsonSerializer.Deserialize<List<Vehicle>>(jsonString) ?? new List<Vehicle>();
         }
 
@@ -71,7 +71,7 @@ namespace CarList
         /// <param name="VehicleToDelete"></param>
         internal static void Delete(Vehicle VehicleToDelete)
         {
-            string path = "vehicles.json";
+           
 
 
             if (!File.Exists(path)) {
