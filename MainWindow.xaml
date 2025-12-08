@@ -21,15 +21,15 @@
             </Grid.RowDefinitions>
 
             <Menu Grid.Row="0" Grid.ColumnSpan ="2" Background="White" FontSize="12" Height="25">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_New" Click="NewMenuItem_Click"/>
-                    <MenuItem Header="_Save" Click="SaveMenuItem_Click"/>
-                    <MenuItem Header="_Open" Click="OpenMenuItem_Click"/>
+                <MenuItem Header="_File" ToolTip="Allows you to create new file, save, and open">
+                    <MenuItem Header="_New" Click="NewMenuItem_Click" ToolTip="Allows you create a new file"/>
+                    <MenuItem Header="_Save" Click="SaveMenuItem_Click" ToolTip="Allows you to save it as a json file"/>
+                    <MenuItem Header="_Open" Click="OpenMenuItem_Click" ToolTip="Allows you to open a json file"/>
                     <Separator/>
                 </MenuItem>
-                <MenuItem Header="_Edit">
-                    <MenuItem Header="_Copy"/>
-                    <MenuItem Header="_Paste"/>
+                <MenuItem Header="Edit" ToolTip="Allows you to copy and paste the input from data grid">
+                    <MenuItem Header="_Copy" ToolTip="Allows you to copy input from vehicle input tab"/>
+                    <MenuItem Header="_Paste" ToolTip="Allows you to paste input from data grid tab into vehicle input tab"/>
                 </MenuItem>
             </Menu>
         </Grid>
