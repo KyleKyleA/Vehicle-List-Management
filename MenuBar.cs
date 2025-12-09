@@ -75,7 +75,7 @@ namespace CarList
                return JsonSerializer.Deserialize<List<Vehicle>>(jsonString) ?? new List<Vehicle>();
             }
 
-            return new List<Vehicle>();
+            return new List<Vehicle>(); // Return an empty list if no file is selected
 
         }
 

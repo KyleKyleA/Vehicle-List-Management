@@ -451,7 +451,7 @@ namespace CarListManagement
             {
                 // Copy vehicle details from data grid to clipboard
                 Clipboard.SetText(selectedVehicle.GetDescription());
-                UpdateStatusBar($"[{DateTime.Now:hh:mm tt]} Copied vehicle details to clipboard."); // Update status bar after user copies 
+                UpdateStatusBar(" Copied vehicle details to clipboard."); // Update status bar after user copies 
             }
             else
             {
@@ -469,7 +469,7 @@ namespace CarListManagement
             if (Clipboard.ContainsText())
             {
                 string clipboardText = Clipboard.GetText();
-                UpdateStatusBar($"Pasted vehicle details from clipboard:\n{clipboardText}");
+                UpdateStatusBar($"Pasted vehicle details from clipboard");
 
             }
             else

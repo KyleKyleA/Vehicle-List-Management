@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 // Description: inventory is saved between each launch of the program
 namespace CarList
 {
-    internal class VehicleRepo
+    internal class VehicleStorage
     {
         // private variable in this class
         private static string path = "vehicles.json";
