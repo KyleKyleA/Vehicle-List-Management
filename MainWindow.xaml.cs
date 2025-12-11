@@ -32,7 +32,7 @@ namespace CarListManagement
     public partial class MainWindow : Window
     {   //Private variable
         // Data storage
-        private VehicleRepo repo = new VehicleRepo();
+        private VehicleStorage repo = new VehicleStorage();
 
 
 
@@ -45,7 +45,7 @@ namespace CarListManagement
             InitializeComponent();
             
             // Load Vehicles from JSON file at startup 
-            listOfVehicles = VehicleRepo.Load();
+            listOfVehicles = VehicleStorage.Load();
 
             
 
@@ -359,7 +359,7 @@ namespace CarListManagement
         protected override void OnClosing(CancelEventArgs e)
         {
             base.OnClosing(e);
-            VehicleRepo.Save(listOfVehicles);
+            VehicleStorage.Save(listOfVehicles);
         }
 
 
@@ -381,7 +381,7 @@ namespace CarListManagement
                 listOfVehicles.Remove(selectedVehicle);
 
                 // Save the JSON
-                VehicleRepo.Save(listOfVehicles);
+                VehicleStorage.Save(listOfVehicles);
 
                 // Refresh the data grid
                 dgCarInventory.ItemsSource = null;
